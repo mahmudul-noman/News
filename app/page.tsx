@@ -59,8 +59,6 @@ export default function Home() {
           title="রাজনীতি"
         />
       </div>
-
-
       <Footer />
     </main >
   )
