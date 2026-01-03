@@ -39,40 +39,26 @@ export function NewsGrid({ articles, showAds = true, columns = 4, title }: NewsG
 
             return (
               <React.Fragment key={article.id}>
-                <article className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col border border-gray-200">
-                  <div className="relative h-48 overflow-hidden bg-gray-200">
+                <article className="group bg-transparent h-full flex flex-col">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded bg-gray-200 mb-3">
                     <Image
                       src={article.thumbnail || article.image}
                       alt={article.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    {article.featured && (
-                      <div className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 text-xs font-bold rounded">
-                        ফিচার
-                      </div>
-                    )}
                   </div>
 
-                  <div className="p-4 flex flex-col flex-grow">
-                    <p className="text-xs font-semibold text-red-600 mb-2 uppercase">{article.category}</p>
-                    <Link href={getArticleLink(article)} className="block flex-grow">
-                      <h3 className="font-bold text-sm md:text-base text-foreground line-clamp-3 hover:text-red-600 transition-colors mb-3 text-balance">
+                  <div className="flex flex-col flex-grow">
+                    <Link href={getArticleLink(article)} className="block">
+                      <h3 className="font-bold text-lg md:text-xl text-gray-900 leading-snug hover:text-red-600 transition-colors mb-2">
                         {article.title}
                       </h3>
                     </Link>
 
-                    <p className="text-xs text-gray-600 mb-3 line-clamp-2 flex-grow">{article.description}</p>
-
-                    <div className="flex items-center justify-between text-xs text-gray-500 pt-3 border-t border-gray-200">
-                      <span>{article.author}</span>
-                      <span>
-                        {new Date(article.publishedAt).toLocaleDateString("bn-BD", {
-                          day: "numeric",
-                          month: "short",
-                        })}
-                      </span>
-                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                      {article.description}
+                    </p>
                   </div>
                 </article>
                 {showAdBelow && (

@@ -46,7 +46,6 @@ export default function Home() {
       </div>
 
       <div className="container-news py-8 border-t border-gray-100">
-        {/* Special News Grid (National) */}
         <SpecialNewsGrid
           articles={sampleNews.filter(a => a.categorySlug === 'national').slice(0, 4)}
           title="স্পেশাল রিপোর্ট"
