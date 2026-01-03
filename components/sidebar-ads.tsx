@@ -26,6 +26,13 @@ export function SidebarAds() {
         </div>
       </div>
 
+      {/* Ad Slot 4 */}
+      <div className="bg-blue-100 rounded-lg overflow-hidden shadow-lg">
+        <div className="relative aspect-square">
+          <Image src="/placeholder.svg?height=300&width=300" alt="বিজ্ঞাপন" fill className="object-cover" />
+        </div>
+      </div>
+
       {/* Newsletter Signup */}
       {/* <div className="bg-gray-900 text-white rounded-lg p-4">
         <h4 className="font-bold mb-2 text-sm">সর্বশেষ খবর পান</h4>

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { NewsGrid } from "@/components/news-grid"
+import { SpecialNewsGrid } from "@/components/special-news-grid"
 import { VideoGallery } from "@/components/video-gallery"
 import { SidebarAds } from "@/components/sidebar-ads"
 import { Footer } from "@/components/footer"
@@ -36,16 +37,20 @@ export default function Home() {
             <section className="mb-8">
               <NewsGrid articles={latestNews} columns={3} title="সর্বশেষ খবর" showAds={true} />
             </section>
-
-            {/* Video Section */}
-            <VideoGallery videos={sampleVideos} />
           </div>
 
-          {/* Sidebar Ads */}
           <div className="lg:col-span-1">
             <SidebarAds />
           </div>
         </div>
+      </div>
+
+      <div className="container-news py-8 border-t border-gray-100">
+        {/* Special News Grid (National) */}
+        <SpecialNewsGrid
+          articles={sampleNews.filter(a => a.categorySlug === 'national').slice(0, 4)}
+          title="স্পেশাল রিপোর্ট"
+        />
       </div>
 
       <Footer />
