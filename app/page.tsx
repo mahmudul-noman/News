@@ -41,7 +41,7 @@ export default function Home() {
           </div>
 
           <div className="lg:col-span-1">
-            <SidebarAds />
+            <SidebarAds count={3} />
           </div>
         </div>
       </div>

@@ -3,9 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import type { NewsArticle } from "@/types/news"
 import { getArticleLink } from "@/lib/utils"
-import { AdSlot } from "./ad-slot"
-import { AD_Config, AD_INJECTION_INTERVAL } from "@/lib/ads-config"
-import { AdBanner } from "./ad-banner"
+
 
 interface NewsGridProps {
   articles: NewsArticle[]
@@ -34,8 +32,7 @@ export function NewsGrid({ articles, showAds = true, columns = 4, title }: NewsG
 
         <div className={`grid ${gridColsClass} gap-6`}>
           {articles.map((article, index) => {
-            const showAdBelow =
-              showAds && (index + 1) % AD_INJECTION_INTERVAL === 0 && index !== articles.length - 1
+
 
             return (
               <React.Fragment key={article.id}>
@@ -61,11 +58,7 @@ export function NewsGrid({ articles, showAds = true, columns = 4, title }: NewsG
                     </p>
                   </div>
                 </article>
-                {showAdBelow && (
-                  <div className={`col-span-1 sm:col-span-2 lg:col-span-${columns} flex justify-center w-full`}>
-                    <AdSlot config={AD_Config.news_grid_inline} />
-                  </div>
-                )}
+
               </React.Fragment>
             )
           })}
