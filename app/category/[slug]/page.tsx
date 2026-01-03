@@ -8,6 +8,7 @@ import { sampleNews, categories } from "@/lib/news-data"
 import { NewsGrid } from "@/components/news-grid"
 import { HeroSection } from "@/components/hero-section"
 import { getArticleLink } from "@/lib/utils"
+import { AdBanner } from "@/components/ad-banner"
 
 interface CategoryPageProps {
   params: Promise<{
@@ -75,17 +76,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <main className="bg-white">
       <Header />
 
-      <div className="bg-gradient-to-r from-orange-300 via-orange-200 to-rose-100 py-4 px-4">
-        <div className="container-news">
-          <div className="flex items-center justify-center">
-            <div className="flex-1 bg-white/40 rounded px-4 py-2 text-center text-xs text-gray-700 font-medium backdrop-blur-sm">
-              আপনার বিজ্ঞাপন এখানে - যোগাযোগ করুন
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="container-news py-8">
+        {/* Category Header and Advertisement Section */}
+        <AdBanner />
+        
         {/* Hero Section: Left - Category Top News | Right - 2 News + 2 Ads Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
           {/* Left Column - Category Top News (Large Featured Article) */}

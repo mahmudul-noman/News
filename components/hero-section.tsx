@@ -2,6 +2,7 @@
 import Link from "next/link"
 import type { NewsArticle } from "@/types/news"
 import { getArticleLink } from "@/lib/utils"
+import { AdBanner } from "./ad-banner"
 
 interface HeroSectionProps {
   featuredArticles?: NewsArticle[]
@@ -15,9 +16,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
     <section className="bg-white">
       <div className="container-news">
         {/* Ads / Banner Section */}
-        <div className="w-full bg-gray-100 border border-gray-300 py-16 my-6 flex items-center justify-center">
-          <p className="text-gray-500 text-lg font-medium">Ads / Banner</p>
-        </div>
+        <AdBanner />
 
         {/* 3-Column Layout: Left Sidebar | Center Featured | Right Sidebar */}
         {articles.length > 0 && (

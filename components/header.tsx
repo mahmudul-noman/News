@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { ChevronDown } from "lucide-react"
 import { useState } from "react"
+import { AdBanner } from "./ad-banner"
 
 export function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
@@ -21,13 +22,10 @@ export function Header() {
   return (
     <>
       <header className="bg-white">
-        {/* Top Promotional Banner */}
-        <div className="bg-gray-100 text-center py-2 px-4">
-          <p className="text-sm text-gray-700">আপনার বিজ্ঞাপন এখানে। সাশ্রয়ী মূল্যে বিশাল পাঠকদের কাছে পৌঁছান।</p>
-        </div>
-
         {/* Logo & Featured Articles Section */}
         <div className="container-news">
+          {/* Ads / Banner Section */}
+          <AdBanner />
           <div className="py-4 border-b border-gray-200">
             <div className="flex items-start justify-between gap-6 mb-4">
               {/* Logo */}
