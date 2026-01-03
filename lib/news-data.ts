@@ -224,9 +224,9 @@ export const sampleNews: NewsArticle[] = [
 /* ===================== রাজনীতি (politics) ===================== */
 {
   id: "13",
-  title: "বিরোধী দলের নতুন কর্মসূচি ঘোষণা",
+  title: "বিরোধী দলের নতুন কর্মসূচি ঘোষণা  সরকার বিরোধী আন্দোলনে নতুন কর্মসূচি।",
   slug: "opposition-new-program",
-  description: "সরকার বিরোধী আন্দোলনে নতুন কর্মসূচি।",
+  description: "সরকার বিরোধী আন্দোলনে নতুন কর্মসূচি। সরকার বিরোধী আন্দোলনে নতুন কর্মসূচি। সরকার বিরোধী আন্দোলনে নতুন কর্মসূচি।",
   content: "বিস্তারিত রাজনৈতিক প্রতিবেদন।",
   image: "/bangladeshi-political-news.jpg",
   thumbnail: "/bangladeshi-political-news.jpg",
