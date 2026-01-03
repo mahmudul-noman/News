@@ -27,41 +27,27 @@ export function SpecialNewsGrid({ articles, title }: SpecialNewsGridProps) {
                 {articles.map((article) => (
                     <article
                         key={article.id}
-                        className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col border border-gray-100"
+                        className="group bg-transparent h-full flex flex-col"
                     >
-                        <div className="relative aspect-[16/10] overflow-hidden bg-gray-200">
+                        <div className="relative aspect-[16/10] overflow-hidden rounded bg-gray-200 mb-3">
                             <Image
                                 src={article.thumbnail || article.image}
                                 alt={article.title}
                                 fill
                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                             />
-                            {article.category && (
-                                <div className="absolute top-2 left-2">
-                                    <span className="px-2 py-1 bg-red-600 text-white text-[10px] font-bold rounded uppercase tracking-wider">
-                                        {article.category}
-                                    </span>
-                                </div>
-                            )}
                         </div>
 
-                        <div className="p-4 flex flex-col flex-grow">
-                            <Link href={getArticleLink(article)} className="block flex-grow">
-                                <h3 className="font-bold text-base text-gray-900 line-clamp-2 hover:text-red-600 transition-colors mb-2 leading-snug">
+                        <div className="flex flex-col flex-grow">
+                            <Link href={getArticleLink(article)} className="block">
+                                <h3 className="font-bold text-lg md:text-xl text-gray-900 leading-snug hover:text-red-600 transition-colors mb-2">
                                     {article.title}
                                 </h3>
                             </Link>
 
-                            <div className="flex items-center text-xs text-gray-500 mt-auto pt-2">
-                                <span className="truncate max-w-[120px]">{article.author}</span>
-                                <span className="mx-1.5">•</span>
-                                <span>
-                                    {new Date(article.publishedAt).toLocaleDateString("bn-BD", {
-                                        day: "numeric",
-                                        month: "short",
-                                    })}
-                                </span>
-                            </div>
+                            <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                                {article.description}
+                            </p>
                         </div>
                     </article>
                 ))}
