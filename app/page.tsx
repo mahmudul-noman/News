@@ -6,6 +6,7 @@ import { SpecialNewsGrid } from "@/components/special-news-grid"
 import { VideoGallery } from "@/components/video-gallery"
 import { SidebarAds } from "@/components/sidebar-ads"
 import { Footer } from "@/components/footer"
+import { PoliticsNewsLayout } from "@/components/politics-news-layout"
 import { sampleNews, sampleVideos } from "@/lib/news-data"
 
 export const metadata: Metadata = {
@@ -52,7 +53,15 @@ export default function Home() {
         />
       </div>
 
+      <div className="container-news py-8 border-t border-gray-100">
+        <PoliticsNewsLayout
+          articles={sampleNews.filter(a => a.categorySlug === 'politics').slice(0, 5)}
+          title="রাজনীতি"
+        />
+      </div>
+
+
       <Footer />
-    </main>
+    </main >
   )
 }

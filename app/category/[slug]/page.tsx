@@ -55,7 +55,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const middleArticles = categoryNews.slice(1, 4)
   const remainingArticles = categoryNews.slice(4)
 
-  
+
   // Fill grid with duplicates if less than 8 items
   let gridArticles = [...remainingArticles]
   if (gridArticles.length > 0 && gridArticles.length < 8) {
@@ -182,20 +182,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </div>
 
               {/* Right Column - Ads 1 & Ads 2 */}
-              <div className="flex flex-col gap-4">
-                {/* Ads 1 */}
-                <div className="flex flex-col border border-gray-300 bg-gray-50 overflow-hidden flex-1">
-                  <div className="flex-grow flex items-center justify-center p-8">
-                    <p className="text-gray-500 text-lg font-medium">Ads 1</p>
-                  </div>
-                </div>
-
-                {/* Ads 2 */}
-                <div className="flex flex-col border border-gray-300 bg-gray-50 overflow-hidden flex-1">
-                  <div className="flex-grow flex items-center justify-center p-8">
-                    <p className="text-gray-500 text-lg font-medium">Ads 2</p>
-                  </div>
-                </div>
+              <div className="h-full">
+                <SidebarAds count={2} />
               </div>
             </div>
           </div>
