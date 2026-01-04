@@ -69,7 +69,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="container-news py-6 border-t border-gray-100">
+      <div className="container-news py-6">
         <SportNewsLayout
           mainArticles={sampleNews.filter(a => a.categorySlug === 'sports').slice(0, 6)}
           title="খেলাধুলা"
@@ -95,7 +95,7 @@ export default function Home() {
         <AdBanner />
       </div>
 
-      <div className="container-news py-6 border-t border-gray-100">
+      <div className="container-news py-6">
         <BusinessNewsLayout
           articles={sampleNews.filter(a => a.categorySlug === 'business').slice(0, 7)}
           title="অর্থনীতি-বাণিজ্য"
