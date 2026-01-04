@@ -4,13 +4,15 @@ import Image from "next/image"
 import type { NewsArticle } from "@/types/news"
 import { getArticleLink } from "@/lib/utils"
 import { SidebarAds } from "@/components/sidebar-ads"
+import { SectionHeader } from "@/components/section-header"
 
 interface PoliticsNewsLayoutProps {
     articles: NewsArticle[]
     title?: string
+    categorySlug?: string
 }
 
-export function PoliticsNewsLayout({ articles, title }: PoliticsNewsLayoutProps) {
+export function PoliticsNewsLayout({ articles, title, categorySlug }: PoliticsNewsLayoutProps) {
     const mainArticle = articles[0]
     const sideArticles = articles.slice(1, 5)
 
@@ -18,12 +20,7 @@ export function PoliticsNewsLayout({ articles, title }: PoliticsNewsLayoutProps)
 
     return (
         <div className="my-8">
-            {title && (
-                <div className="mb-6 flex items-center gap-2">
-                    <div className="w-1.5 h-6 bg-red-600 rounded-sm"></div>
-                    <h2 className="text-xl md:text-2xl font-bold text-foreground uppercase">{title}</h2>
-                </div>
-            )}
+            <SectionHeader title={title} categorySlug={categorySlug} />
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-stretch">
                 {/* Left Column: 4 Small News Items */}
@@ -31,9 +28,8 @@ export function PoliticsNewsLayout({ articles, title }: PoliticsNewsLayoutProps)
                     {sideArticles.map((article, index) => (
                         <article
                             key={article.id}
-                            className={`group flex gap-4 items-center ${
-                                index !== sideArticles.length - 1 ? "border-b border-gray-200" : ""
-                            } first:pt-0 last:pb-0 h-full`}
+                            className={`group flex gap-4 items-center ${index !== sideArticles.length - 1 ? "border-b border-gray-200" : ""
+                                } first:pt-0 last:pb-0 h-full`}
                         >
                             <div className="relative w-32 h-20 flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
                                 <Image

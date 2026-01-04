@@ -4,7 +4,7 @@ import Image from "next/image"
 import type { NewsArticle } from "@/types/news"
 import { getArticleLink } from "@/lib/utils"
 import { SidebarAds } from "@/components/sidebar-ads"
-import { ChevronRight } from "lucide-react"
+import { SectionHeader } from "@/components/section-header"
 
 interface BusinessNewsLayoutProps {
     articles: NewsArticle[]
@@ -23,22 +23,7 @@ export function BusinessNewsLayout({ articles, title, categorySlug }: BusinessNe
 
     return (
         <div className="my-8 text-black">
-            {title && (
-                <div className="mb-6 flex items-center justify-between border-b border-gray-200 pb-2">
-                    <h2 className="text-xl md:text-2xl font-bold text-foreground">
-                        {title}
-                    </h2>
-                    {categorySlug && (
-                        <Link
-                            href={`/category/${categorySlug}`}
-                            className="text-sm md:text-base text-red-600 hover:text-red-800 flex items-center gap-1 font-medium"
-                        >
-                            এই বিভাগের সব খবর
-                            <ChevronRight className="h-4 w-4" />
-                        </Link>
-                    )}
-                </div>
-            )}
+            <SectionHeader title={title} categorySlug={categorySlug} />
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-stretch">
                 {/* Left Column: 4 Small News Items */}

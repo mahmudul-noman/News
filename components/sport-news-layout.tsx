@@ -8,13 +8,15 @@ import { getArticleLink } from "@/lib/utils"
 import { SidebarAds } from "@/components/sidebar-ads"
 import { sampleNews } from "@/lib/news-data"
 import { cn } from "@/lib/utils"
+import { SectionHeader } from "@/components/section-header"
 
 interface SportNewsLayoutProps {
     title?: string
+    categorySlug?: string
     mainArticles: NewsArticle[]
 }
 
-export function SportNewsLayout({ title = "খেলাধুলা", mainArticles }: SportNewsLayoutProps) {
+export function SportNewsLayout({ title = "খেলাধুলা", categorySlug, mainArticles }: SportNewsLayoutProps) {
     const [activeTab, setActiveTab] = useState<"read" | "discussed" | "good_news">("read")
 
     // Data for Tabs (Mocking logic based on sampleNews)
@@ -40,11 +42,7 @@ export function SportNewsLayout({ title = "খেলাধুলা", mainArticl
 
     return (
         <div className="my-8">
-            {/* Section Title */}
-            <div className="mb-6 flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-red-600 rounded-sm"></div>
-                <h2 className="text-xl md:text-2xl font-bold text-foreground uppercase">{title}</h2>
-            </div>
+            <SectionHeader title={title} categorySlug={categorySlug} />
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-gray-200 items-stretch">
 

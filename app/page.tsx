@@ -57,6 +57,7 @@ export default function Home() {
         <SpecialNewsGrid
           articles={sampleNews.filter(a => a.categorySlug === 'national').slice(0, 4)}
           title="স্পেশাল রিপোর্ট"
+          categorySlug="national"
         />
       </div>
 
@@ -64,6 +65,7 @@ export default function Home() {
         <PoliticsNewsLayout
           articles={sampleNews.filter(a => a.categorySlug === 'politics').slice(0, 5)}
           title="রাজনীতি"
+          categorySlug="politics"
         />
       </div>
 
@@ -71,6 +73,7 @@ export default function Home() {
         <SportNewsLayout
           mainArticles={sampleNews.filter(a => a.categorySlug === 'sports').slice(0, 6)}
           title="খেলাধুলা"
+          categorySlug="sports"
         />
       </div>
 
@@ -83,6 +86,7 @@ export default function Home() {
         <EntertainmentNewsLayout
           articles={sampleNews.filter(a => a.categorySlug === 'entertainment').slice(0, 9)}
           title="বিনোদন"
+          categorySlug="entertainment"
         />
       </div>
 

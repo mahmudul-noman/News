@@ -3,13 +3,15 @@ import Link from "next/link"
 import Image from "next/image"
 import type { NewsArticle } from "@/types/news"
 import { getArticleLink } from "@/lib/utils"
+import { SectionHeader } from "@/components/section-header"
 
 interface EntertainmentNewsLayoutProps {
     articles: NewsArticle[]
     title?: string
+    categorySlug?: string
 }
 
-export function EntertainmentNewsLayout({ articles, title }: EntertainmentNewsLayoutProps) {
+export function EntertainmentNewsLayout({ articles, title, categorySlug }: EntertainmentNewsLayoutProps) {
     const mainArticle = articles[0]
     // Left column: items 1-4 (4 items)
     const leftArticles = articles.slice(1, 5)
@@ -20,12 +22,7 @@ export function EntertainmentNewsLayout({ articles, title }: EntertainmentNewsLa
 
     return (
         <div className="my-8 text-black">
-            {title && (
-                <div className="mb-6 flex items-center gap-2">
-                    <div className="w-1.5 h-6 bg-red-600 rounded-sm"></div>
-                    <h2 className="text-xl md:text-2xl font-bold text-foreground uppercase">{title}</h2>
-                </div>
-            )}
+            <SectionHeader title={title} categorySlug={categorySlug} />
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-stretch">
                 {/* Left Column: 4 Small News Items */}

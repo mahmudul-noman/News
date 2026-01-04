@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import type { NewsArticle } from "@/types/news"
 import { getArticleLink } from "@/lib/utils"
+import { SectionHeader } from "@/components/section-header"
 
 
 interface NewsGridProps {
@@ -10,9 +11,10 @@ interface NewsGridProps {
   showAds?: boolean
   columns?: 2 | 3 | 4
   title?: string
+  categorySlug?: string
 }
 
-export function NewsGrid({ articles, showAds = true, columns = 4, title }: NewsGridProps) {
+export function NewsGrid({ articles, showAds = true, columns = 4, title, categorySlug }: NewsGridProps) {
   const gridColsClass =
     ({
       2: "grid-cols-1 sm:grid-cols-2",
@@ -23,12 +25,7 @@ export function NewsGrid({ articles, showAds = true, columns = 4, title }: NewsG
   return (
     <>
       <div className="my-6">
-        {title && (
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-foreground mb-1">{title}</h2>
-            <div className="w-12 h-1 bg-red-600 rounded"></div>
-          </div>
-        )}
+        <SectionHeader title={title} categorySlug={categorySlug} />
 
         <div className={`grid ${gridColsClass} gap-6`}>
           {articles.map((article, index) => {

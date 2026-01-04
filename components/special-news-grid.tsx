@@ -3,25 +3,22 @@ import Link from "next/link"
 import Image from "next/image"
 import type { NewsArticle } from "@/types/news"
 import { getArticleLink } from "@/lib/utils"
+import { SectionHeader } from "@/components/section-header"
 
 interface SpecialNewsGridProps {
     articles: NewsArticle[]
     title?: string
+    categorySlug?: string
 }
 
-export function SpecialNewsGrid({ articles, title }: SpecialNewsGridProps) {
+export function SpecialNewsGrid({ articles, title, categorySlug }: SpecialNewsGridProps) {
     // Enforce 4 articles row if possible, but the grid will handle responsive behavior
     // The user requested "show 4 news in a row" -> mainly for large screens
     const gridColsClass = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
 
     return (
         <div className="my-8">
-            {title && (
-                <div className="mb-6 flex items-center gap-2">
-                    <div className="w-1.5 h-6 bg-red-600 rounded-sm"></div>
-                    <h2 className="text-xl md:text-2xl font-bold text-foreground uppercase">{title}</h2>
-                </div>
-            )}
+            <SectionHeader title={title} categorySlug={categorySlug} />
 
             <div className={`grid ${gridColsClass} gap-6`}>
                 {articles.map((article) => (
