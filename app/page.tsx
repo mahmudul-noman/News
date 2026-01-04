@@ -8,6 +8,7 @@ import { SidebarAds } from "@/components/sidebar-ads"
 import { Footer } from "@/components/footer"
 import { PoliticsNewsLayout } from "@/components/politics-news-layout"
 import { SportNewsLayout } from "@/components/sport-news-layout"
+import { EntertainmentNewsLayout } from "@/components/entertainment-news-layout"
 import { sampleNews, sampleVideos } from "@/lib/news-data"
 import { AdBanner } from "@/components/ad-banner"
 
@@ -69,6 +70,18 @@ export default function Home() {
         <SportNewsLayout
           mainArticles={sampleNews.filter(a => a.categorySlug === 'sports').slice(0, 6)}
           title="খেলাধুলা"
+        />
+      </div>
+
+      {/* Ads / Banner Section */}
+      <div className="container-news">
+        <AdBanner />
+      </div>
+
+      <div className="container-news py-6 border-t border-gray-100">
+        <EntertainmentNewsLayout
+          articles={sampleNews.filter(a => a.categorySlug === 'entertainment').slice(0, 9)}
+          title="বিনোদন"
         />
       </div>
 
