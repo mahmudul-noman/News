@@ -14,13 +14,13 @@ const siyamRupali = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Bangla News 24 - বাংলা নিউজ ২৪ | দেশের শীর্ষ খবর",
+  title: "বিডি রেকর্ডস টুডে | দেশের শীর্ষ খবর",
   description:
-    "Bangla News 24 - বাংলাদেশের সবচেয়ে বিশ্বস্ত অনলাইন নিউজ পোর্টাল। দেশ, বিদেশ, ব্যবসা, খেলা সহ সব ধরনের খবর পান লাইভ আপডেট সহ।",
+    "বিডি রেকর্ডস টুডে - বাংলাদেশের সবচেয়ে বিশ্বস্ত অনলাইন নিউজ পোর্টাল। দেশ, বিদেশ, ব্যবসা, খেলা সহ সব ধরনের খবর পান লাইভ আপডেট সহ।",
   keywords: "বাংলা খবর, বাংলাদেশ খবর, নিউজ, লেটেস্ট নিউজ, আজকের খবর, অনলাইন নিউজ, দেশি খবর",
-  authors: [{ name: "Bangla News 24" }],
-  creator: "Bangla News 24",
-  publisher: "Bangla News 24",
+  authors: [{ name: "Bd Records Today" }],
+  creator: "Bd Records Today",
+  publisher: "Bd Records Today",
   formatDetection: {
     email: false,
     telephone: false,
@@ -46,14 +46,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "bn_BD",
-    url: "https://banglanews24.com",
-    siteName: "Bangla News 24",
-    title: "Bangla News 24 - বাংলা নিউজ ২৪",
+    url: "https://bdrecordstoday.com",
+    siteName: "Bd Records Today",
+    title: "Bd Records Today - বাংলা নিউজ ২৪",
     description: "বাংলাদেশের শীর্ষস্থানীয় অনলাইন নিউজ পোর্টাল",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bangla News 24",
+    title: "Bd Records Today",
     description: "বাংলাদেশের শীর্ষস্থানীয় অনলাইন নিউজ পোর্টাল",
   },
   generator: 'v0.app'
@@ -76,11 +76,11 @@ export default function RootLayout({
     <html lang="bn">
       <head>
         <meta name="theme-color" content="#E31E24" />
-        <meta name="application-name" content="Bangla News 24" />
+        <meta name="application-name" content="Bd Records Today" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Bangla News 24" />
-        <link rel="alternate" hrefLang="bn" href="https://banglanews24.com" />
+        <meta name="apple-mobile-web-app-title" content="Bd Records Today" />
+        <link rel="alternate" hrefLang="bn" href="https://bdrecordstoday.com" />
       </head>
       <body className={`${siyamRupali.variable} font-sans antialiased bg-background text-foreground`}>
         {children}

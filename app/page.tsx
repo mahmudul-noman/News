@@ -14,13 +14,13 @@ import { sampleNews, sampleVideos } from "@/lib/news-data"
 import { AdBanner } from "@/components/ad-banner"
 
 export const metadata: Metadata = {
-  title: "Bangla News 24 - বাংলা নিউজ ২৪ | দেশের শীর্ষ খবর",
+  title: "বিডি রেকর্ডস টুডে - বাংলা নিউজ ২৪ | দেশের শীর্ষ খবর",
   description:
-    "Bangla News 24 - বাংলাদেশের সবচেয়ে বিশ্বস্ত অনলাইন নিউজ পোর্টাল। দেশ, বিদেশ, ব্যবসা, খেলা সহ সব ধরনের খবর পান লাইভ আপডেট সহ।",
+    "বিডি রেকর্ডস টুডে - বাংলাদেশের সবচেয়ে বিশ্বস্ত অনলাইন নিউজ পোর্টাল। দেশ, বিদেশ, ব্যবসা, খেলা সহ সব ধরনের খবর পান লাইভ আপডেট সহ।",
   openGraph: {
-    title: "Bangla News 24 - দেশের শীর্ষ খবর",
+    title: "বিডি রেকর্ডস টুডে - দেশের শীর্ষ খবর",
     description: "বাংলাদেশের শীর্ষস্থানীয় অনলাইন নিউজ পোর্টাল",
-    url: "https://banglanews24.com",
+    url: "https://bdrecordstoday.com",
     type: "website",
     locale: "bn_BD",
   },
