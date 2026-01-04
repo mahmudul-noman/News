@@ -29,8 +29,6 @@ export function NewsGrid({ articles, showAds = true, columns = 4, title, categor
 
         <div className={`grid ${gridColsClass} gap-6`}>
           {articles.map((article, index) => {
-
-
             return (
               <React.Fragment key={article.id}>
                 <article className="group bg-transparent h-full flex flex-col">

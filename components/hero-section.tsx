@@ -28,7 +28,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                 {articles[0] && (
                   <Link
                     href={getArticleLink(articles[0])}
-                    className="group flex flex-col border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
                   >
                     <div className="relative h-32 overflow-hidden bg-gray-200">
                       <img
@@ -49,7 +49,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                 {articles[1] && (
                   <Link
                     href={getArticleLink(articles[1])}
-                    className="group flex flex-col border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
                   >
                     <div className="relative h-32 overflow-hidden bg-gray-200">
                       <img
@@ -71,7 +71,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
               {articles[2] && (
                 <Link
                   href={getArticleLink(articles[2])}
-                  className="group flex flex-col border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                  className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
                 >
                   <div className="relative h-32 overflow-hidden bg-gray-200">
                     <img
@@ -94,7 +94,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
               {articles[3] && (
                 <Link
                   href={getArticleLink(articles[3])}
-                  className="group flex flex-col border border-gray-300 overflow-hidden hover:shadow-lg transition-shadow bg-white h-full"
+                  className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white h-full"
                 >
                   <div className="relative h-64 overflow-hidden bg-gray-200">
                     <img
@@ -122,7 +122,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                 {articles[1] && (
                   <Link
                     href={getArticleLink(articles[1])}
-                    className="group flex flex-col border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
                   >
                     <div className="relative h-32 overflow-hidden bg-gray-200">
                       <img
@@ -143,7 +143,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                 {articles[2] && (
                   <Link
                     href={getArticleLink(articles[2])}
-                    className="group flex flex-col border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
                   >
                     <div className="relative h-32 overflow-hidden bg-gray-200">
                       <img
@@ -165,7 +165,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
               {articles[3] && (
                 <Link
                   href={getArticleLink(articles[3])}
-                  className="group flex flex-col border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                  className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
                 >
                   <div className="relative h-32 overflow-hidden bg-gray-200">
                     <img
