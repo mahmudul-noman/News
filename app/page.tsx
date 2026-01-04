@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer"
 import { PoliticsNewsLayout } from "@/components/politics-news-layout"
 import { SportNewsLayout } from "@/components/sport-news-layout"
 import { EntertainmentNewsLayout } from "@/components/entertainment-news-layout"
+import { BusinessNewsLayout } from "@/components/business-news-layout"
 import { sampleNews, sampleVideos } from "@/lib/news-data"
 import { AdBanner } from "@/components/ad-banner"
 
@@ -89,6 +90,15 @@ export default function Home() {
       <div className="container-news">
         <AdBanner />
       </div>
+
+      <div className="container-news py-6 border-t border-gray-100">
+        <BusinessNewsLayout
+          articles={sampleNews.filter(a => a.categorySlug === 'business').slice(0, 7)}
+          title="অর্থনীতি-বাণিজ্য"
+          categorySlug="business"
+        />
+      </div>
+
       <Footer />
     </main >
   )
