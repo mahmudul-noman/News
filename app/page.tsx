@@ -32,15 +32,13 @@ export default function Home() {
       <HeroSection featuredArticles={featuredArticles} />
 
       <div className="container-news py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-3">
             {/* Featured News Grid */}
-            <section className="mb-8">
-              <NewsGrid articles={latestNews} columns={3} title="সর্বশেষ খবর" showAds={true} />
-            </section>
+            <NewsGrid articles={latestNews} columns={3} title="সর্বশেষ খবর" showAds={true} />
           </div>
 
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 h-full">
             <SidebarAds count={3} />
           </div>
         </div>
