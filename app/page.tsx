@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer"
 import { PoliticsNewsLayout } from "@/components/politics-news-layout"
 import { SportNewsLayout } from "@/components/sport-news-layout"
 import { sampleNews, sampleVideos } from "@/lib/news-data"
+import { AdBanner } from "@/components/ad-banner"
 
 export const metadata: Metadata = {
   title: "Bangla News 24 - বাংলা নিউজ ২৪ | দেশের শীর্ষ খবর",
@@ -32,7 +33,7 @@ export default function Home() {
       <Header />
       <HeroSection featuredArticles={featuredArticles} />
 
-      <div className="container-news py-8">
+      <div className="container-news py-6">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-3">
             {/* Featured News Grid */}
@@ -45,25 +46,35 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container-news py-8 border-t border-gray-100">
+      {/* Ads / Banner Section */}
+      <div className="container-news">
+        <AdBanner />
+      </div>
+
+      <div className="container-news py-6 border-t border-gray-100">
         <SpecialNewsGrid
           articles={sampleNews.filter(a => a.categorySlug === 'national').slice(0, 4)}
           title="স্পেশাল রিপোর্ট"
         />
       </div>
 
-      <div className="container-news py-8 border-t border-gray-100">
+      <div className="container-news py-6 border-t border-gray-100">
         <PoliticsNewsLayout
           articles={sampleNews.filter(a => a.categorySlug === 'politics').slice(0, 5)}
           title="রাজনীতি"
         />
       </div>
 
-      <div className="container-news py-8 border-t border-gray-100">
+      <div className="container-news py-6 border-t border-gray-100">
         <SportNewsLayout
           mainArticles={sampleNews.filter(a => a.categorySlug === 'sports').slice(0, 6)}
           title="খেলাধুলা"
         />
+      </div>
+
+      {/* Ads / Banner Section */}
+      <div className="container-news">
+        <AdBanner />
       </div>
       <Footer />
     </main >
