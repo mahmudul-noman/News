@@ -61,7 +61,7 @@ export default function Home() {
 
       <div className="container-news py-8 border-t border-gray-100">
         <SportNewsLayout
-          mainArticles={sampleNews.filter(a => a.categorySlug === 'sports').slice(0, 3)}
+          mainArticles={sampleNews.filter(a => a.categorySlug === 'sports').slice(0, 6)}
           title="খেলাধুলা"
         />
       </div>

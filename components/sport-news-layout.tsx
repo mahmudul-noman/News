@@ -35,8 +35,8 @@ export function SportNewsLayout({ title = "খেলাধুলা", mainArticl
     const mainBigNews = mainArticles[0]
     const mainSubNews = mainArticles.slice(1, 3)
 
-    // Right Column Data (Latest 3 news for list)
-    const rightSideNews = sampleNews.slice(15, 18)
+    // Right Column Data (Next 3 news from mainArticles)
+    const rightSideNews = mainArticles.slice(3, 6)
 
     return (
         <div className="my-8">
