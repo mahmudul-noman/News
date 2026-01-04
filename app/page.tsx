@@ -43,7 +43,7 @@ export default function Home() {
           </div>
 
           <div className="lg:col-span-1 h-full">
-            <SidebarAds count={3} />
+            <SidebarAds count={4} />
           </div>
         </div>
       </div>
