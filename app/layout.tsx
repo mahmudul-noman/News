@@ -1,11 +1,17 @@
 import type React from "react"
 import type { Metadata } from "next"
+import localFont from "next/font/local"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
+
+const siyamRupali = localFont({
+  src: "../public/fonts/Siyamrupali.ttf",
+  variable: "--font-siyam-rupali",
+})
 
 export const metadata: Metadata = {
   title: "Bangla News 24 - বাংলা নিউজ ২৪ | দেশের শীর্ষ খবর",
@@ -50,7 +56,7 @@ export const metadata: Metadata = {
     title: "Bangla News 24",
     description: "বাংলাদেশের শীর্ষস্থানীয় অনলাইন নিউজ পোর্টাল",
   },
-    generator: 'v0.app'
+  generator: 'v0.app'
 }
 
 export const viewport = {
@@ -76,7 +82,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Bangla News 24" />
         <link rel="alternate" hrefLang="bn" href="https://banglanews24.com" />
       </head>
-      <body className={`font-sans antialiased bg-background text-foreground`}>
+      <body className={`${siyamRupali.variable} font-sans antialiased bg-background text-foreground`}>
         {children}
         <Analytics />
       </body>
