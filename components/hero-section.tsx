@@ -28,13 +28,13 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                 {articles[0] && (
                   <Link
                     href={getArticleLink(articles[0])}
-                    className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden bg-white"
                   >
                     <div className="relative h-32 overflow-hidden bg-gray-200">
                       <img
                         src={articles[0].thumbnail || articles[0].image}
                         alt={articles[0].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="p-2 flex-grow">
@@ -49,13 +49,13 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                 {articles[1] && (
                   <Link
                     href={getArticleLink(articles[1])}
-                    className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden bg-white"
                   >
                     <div className="relative h-32 overflow-hidden bg-gray-200">
                       <img
                         src={articles[1].thumbnail || articles[1].image}
                         alt={articles[1].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="p-2 flex-grow">
@@ -71,13 +71,13 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
               {articles[2] && (
                 <Link
                   href={getArticleLink(articles[2])}
-                  className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                  className="group flex flex-col overflow-hidden bg-white"
                 >
                   <div className="relative h-32 overflow-hidden bg-gray-200">
                     <img
                       src={articles[2].thumbnail || articles[2].image}
                       alt={articles[2].title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="p-2">
@@ -94,13 +94,13 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
               {articles[3] && (
                 <Link
                   href={getArticleLink(articles[3])}
-                  className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white h-full"
+                  className="group flex flex-col overflow-hidden bg-white h-full"
                 >
                   <div className="relative h-64 overflow-hidden bg-gray-200">
                     <img
                       src={articles[3].thumbnail || articles[3].image}
                       alt={articles[3].title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="p-6 flex flex-col justify-center items-center text-center flex-grow">
@@ -122,13 +122,13 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                 {articles[1] && (
                   <Link
                     href={getArticleLink(articles[1])}
-                    className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden bg-white"
                   >
                     <div className="relative h-32 overflow-hidden bg-gray-200">
                       <img
                         src={articles[1].thumbnail || articles[1].image}
                         alt={articles[1].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="p-2 flex-grow">
@@ -143,13 +143,13 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                 {articles[2] && (
                   <Link
                     href={getArticleLink(articles[2])}
-                    className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden bg-white"
                   >
                     <div className="relative h-32 overflow-hidden bg-gray-200">
                       <img
                         src={articles[2].thumbnail || articles[2].image}
                         alt={articles[2].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="p-2 flex-grow">
@@ -165,13 +165,13 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
               {articles[3] && (
                 <Link
                   href={getArticleLink(articles[3])}
-                  className="group flex flex-col overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                  className="group flex flex-col overflow-hidden bg-white"
                 >
                   <div className="relative h-32 overflow-hidden bg-gray-200">
                     <img
                       src={articles[3].thumbnail || articles[3].image}
                       alt={articles[3].title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="p-2">
