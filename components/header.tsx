@@ -1,12 +1,18 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, ThumbsUp } from "lucide-react"
 import { useState } from "react"
 import { AdBanner } from "./ad-banner"
+import { sampleNews } from "@/lib/news-data"
 
 export function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+
+  const latestNews = sampleNews
+    .filter(article => article.categorySlug === "latest")
+    .slice(0, 3)
 
   const categories = [
     { name: "সর্বশেষ", slug: "latest" },
@@ -26,42 +32,62 @@ export function Header() {
         <div className="container-news">
           {/* Ads / Banner Section */}
           <AdBanner />
+
+
+          {/* Logo & Featured Articles Section */}
           <div className="py-4 border-b border-gray-200">
-            <div className="flex items-start justify-between gap-6 mb-4">
+            <div className="flex items-center justify-between gap-6">
               {/* Logo */}
               <Link href="/" className="flex-shrink-0">
-                <div className="flex items-center gap-2">
-                  <div className="bg-red-600 text-white px-3 py-2 font-bold text-center">
-                    <div className="text-lg">BANGLA</div>
-                    <div className="text-lg">NEWS 24</div>
-                  </div>
-                  <div className="text-gray-400 text-sm">.com</div>
-                </div>
+                <Image
+                  src="/logo.webp"
+                  alt="Bangla News 24"
+                  width={200}
+                  height={60}
+                  className="h-auto w-auto max-h-[60px]"
+                />
               </Link>
 
               {/* Featured Articles Preview */}
-              <div className="flex-1 grid grid-cols-4 gap-3 text-sm">
-                <div className="border-l-2 border-gray-300 pl-3">
-                  <p className="text-gray-700 line-clamp-2 text-xs">গণতন্ত্রে 'খা' দিলে কী পাবেন, 'না' দিলে কী পাবেন না</p>
-                </div>
-                <div className="border-l-2 border-gray-300 pl-3">
-                  <p className="text-gray-700 line-clamp-2 text-xs">প্রিন্স আর্চার ও যে কমনমন্থ দেখ সিনেমা</p>
-                </div>
-                <div className="border-l-2 border-gray-300 pl-3">
-                  <p className="text-gray-700 line-clamp-2 text-xs">বর্ণনার বিকৃতিকা জুরেরের দেশ সিনেমা</p>
-                </div>
-                <div className="border-l-2 border-gray-300 pl-3">
-                  <p className="text-gray-700 line-clamp-2 text-xs">বর্ণনার বিকৃতিকা হুরে রে বিষয় আধ্যা</p>
-                </div>
+              <div className="hidden md:flex flex-1 items-center justify-center gap-4">
+                {latestNews.map((news) => (
+                  <Link
+                    key={news.id}
+                    href={`/category/${news.categorySlug}/${news.slug}`}
+                    className="flex items-start gap-2 max-w-[220px] group"
+                  >
+                    <div className="w-16 h-12 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
+                      <Image
+                        src={news.thumbnail || news.image}
+                        alt={news.title}
+                        width={64}
+                        height={48}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <p className="text-base leading-[1.3] text-gray-800 line-clamp-2 group-hover:text-red-600 transition-colors">
+                      {news.title}
+                    </p>
+                  </Link>
+                ))}
               </div>
 
-              {/* Date & Language */}
-              <div className="flex-shrink-0 text-right text-xs">
-                <p className="text-gray-600">ঢাকা, শনিবার ০৩ জানুয়ারি ২০২৬</p>
-                <p className="text-gray-600">১২ জৈষ্ঠ ১৪৩২, ১৫ রজব ১৪৪৭</p>
+              {/* Date & Social Section */}
+              <div className="flex-shrink-0 text-right">
+                <div className="flex items-center justify-end gap-1 text-gray-500 mb-1">
+                  <ThumbsUp size={14} className="text-gray-400" />
+                  <span className="text-xs font-medium">সোসাল মিডিয়া</span>
+                  <ChevronDown size={14} className="text-gray-400" />
+                </div>
+                <div className="text-xs text-gray-600 space-y-0.5">
+                  <p>ঢাকা, রবিবার ০৪ জানুয়ারি ২০২৬</p>
+                  <p>২০ পৌষ ১৪৩২, ১৪ রজব ১৪৪৭</p>
+                </div>
               </div>
             </div>
           </div>
+
+
         </div>
       </header>
 
@@ -71,7 +97,7 @@ export function Header() {
           <nav className="flex items-center justify-between py-3 overflow-x-auto">
             <Link href="/" className="flex items-center gap-2 text-gray-700 hover:text-red-600 flex-shrink-0">
               <span className="text-xl">🏠</span>
-              <span className="hidden sm:inline">সর্বশেষ</span>
+              <span className="hidden sm:inline text-base">সর্বশেষ</span>
             </Link>
 
             {categories.slice(1).map((cat) => (
@@ -83,7 +109,7 @@ export function Header() {
               >
                 <Link
                   href={`/category/${cat.slug}`}
-                  className="px-3 py-2 text-sm text-gray-700 hover:text-red-600 hover:bg-gray-100 rounded transition-colors whitespace-nowrap"
+                  className="px-3 py-2 text-base text-gray-700 hover:text-red-600 hover:bg-gray-100 rounded transition-colors whitespace-nowrap"
                 >
                   {cat.name}
                 </Link>
@@ -92,14 +118,14 @@ export function Header() {
 
             {/* Right side controls */}
             <div className="flex items-center gap-2 ml-auto flex-shrink-0">
-              <button className="px-2 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded">ভিডিও</button>
+              <button className="px-2 py-1 text-base text-gray-700 hover:bg-gray-100 rounded">ভিডিও</button>
               <div className="relative group">
-                <button className="px-2 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded flex items-center gap-1">
+                <button className="px-2 py-1 text-base text-gray-700 hover:bg-gray-100 rounded flex items-center gap-1">
                   বিভিন্ন <ChevronDown size={16} />
                 </button>
               </div>
-              <button className="px-2 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded">EN</button>
-              <button className="px-2 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded">আরবি</button>
+              <button className="px-2 py-1 text-base text-gray-700 hover:bg-gray-100 rounded">EN</button>
+              <button className="px-2 py-1 text-base text-gray-700 hover:bg-gray-100 rounded">আরবি</button>
             </div>
           </nav>
         </div>
