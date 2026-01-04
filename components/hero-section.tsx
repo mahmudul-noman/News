@@ -11,7 +11,7 @@ interface HeroSectionProps {
 export function HeroSection({ featuredArticles }: HeroSectionProps) {
   // Ensure we have enough articles for the layout
   const articles = featuredArticles || []
-  
+
   return (
     <section className="bg-white">
       <div className="container-news">
@@ -20,9 +20,9 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
 
         {/* 3-Column Layout: Left Sidebar | Center Featured | Right Sidebar */}
         {articles.length > 0 && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:divide-x lg:divide-gray-200">
             {/* Left Sidebar - News 1, 2, 3 */}
-            <div className="lg:col-span-4 flex flex-col h-full">
+            <div className="lg:col-span-4 flex flex-col h-full lg:pr-4 py-4 lg:py-0">
               <div className="grid grid-cols-2 gap-4 mb-4">
                 {/* News 1 */}
                 {articles[0] && (
@@ -90,7 +90,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
             </div>
 
             {/* Center - Today Top News (Large Featured) */}
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-4 lg:px-4 py-4 lg:py-0">
               {articles[3] && (
                 <Link
                   href={getArticleLink(articles[3])}
@@ -116,7 +116,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
             </div>
 
             {/* Right Sidebar - News 1, 2, 3 */}
-            <div className="lg:col-span-4 flex flex-col h-full">
+            <div className="lg:col-span-4 flex flex-col h-full lg:pl-4 py-4 lg:py-0">
               <div className="grid grid-cols-2 gap-4 mb-4">
                 {/* News 1 */}
                 {articles[1] && (
