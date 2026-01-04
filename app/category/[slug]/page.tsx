@@ -75,8 +75,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <main className="bg-white">
       <Header />
-
-
+      
       <div className="container-news py-8">
         {/* Category Header and Advertisement Section */}
         <AdBanner />
