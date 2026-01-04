@@ -80,30 +80,27 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <div className="container-news py-8">
         {/* Category Header and Advertisement Section */}
         <AdBanner />
-        
+
         {/* Hero Section: Left - Category Top News | Right - 2 News + 2 Ads Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
           {/* Left Column - Category Top News (Large Featured Article) */}
           {featuredArticle && (
             <div className="lg:col-span-6">
-              <article className="group flex flex-col border border-gray-300 overflow-hidden hover:shadow-lg transition-shadow bg-white h-full">
+              <article className="group flex flex-col overflow-hidden transition-shadow bg-white h-full">
                 <div className="relative w-full h-96 bg-gray-200 overflow-hidden">
                   <img
                     src={featuredArticle.image || "/placeholder.svg?height=400&width=600&query=featured news"}
                     alt={featuredArticle.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover transition-transform duration-300"
                   />
                 </div>
-                <div className="p-6 flex flex-col justify-center flex-grow">
-                  <h2 className="text-2xl font-bold text-foreground mb-4 group-hover:text-red-600 transition-colors">
-                    Category Top News
-                  </h2>
+                <div className="flex flex-col justify-center">
                   <Link href={getArticleLink(featuredArticle)}>
-                    <h3 className="text-lg font-semibold text-foreground hover:text-primary transition-colors mb-3 line-clamp-3">
+                    <h3 className="text-lg font-semibold text-foreground hover:text-primary transition-colors mb-3 line-clamp-3 leading-[2.75rem]">
                       {featuredArticle.title}
                     </h3>
                   </Link>
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{featuredArticle.description}</p>
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-2 leading-[1.2rem]">{featuredArticle.description}</p>
                   <p className="text-xs text-gray-500">
                     {new Date(featuredArticle.publishedAt).toLocaleDateString("bn-BD", {
                       day: "numeric",
@@ -125,25 +122,19 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 {middleArticles[0] && (
                   <Link
                     href={getArticleLink(middleArticles[0])}
-                    className="group flex flex-col border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden transition-shadow bg-white"
                   >
                     <div className="relative h-48 overflow-hidden bg-gray-200">
                       <img
                         src={middleArticles[0].image || "/placeholder.svg?height=200&width=300&query=news thumbnail"}
                         alt={middleArticles[0].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover transition-transform duration-300"
                       />
                     </div>
-                    <div className="p-4 flex-grow">
-                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-3 group-hover:text-red-600 transition-colors">
+                    <div className="flex-grow">
+                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-3 group-hover:text-red-600 transition-colors leading-[2.75rem]">
                         {middleArticles[0].title}
                       </h3>
-                      <p className="text-xs text-gray-500 mt-2">
-                        {new Date(middleArticles[0].publishedAt).toLocaleDateString("bn-BD", {
-                          day: "numeric",
-                          month: "short",
-                        })}
-                      </p>
                     </div>
                   </Link>
                 )}
@@ -152,25 +143,19 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 {middleArticles[1] && (
                   <Link
                     href={getArticleLink(middleArticles[1])}
-                    className="group flex flex-col border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                    className="group flex flex-col overflow-hidden transition-shadow bg-white"
                   >
                     <div className="relative h-48 overflow-hidden bg-gray-200">
                       <img
                         src={middleArticles[1].image || "/placeholder.svg?height=200&width=300&query=news thumbnail"}
                         alt={middleArticles[1].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover transition-transform duration-300"
                       />
                     </div>
-                    <div className="p-4 flex-grow">
-                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-3 group-hover:text-red-600 transition-colors">
+                    <div className="flex-grow">
+                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-3 group-hover:text-red-600 transition-colors leading-[2.75rem]">
                         {middleArticles[1].title}
                       </h3>
-                      <p className="text-xs text-gray-500 mt-2">
-                        {new Date(middleArticles[1].publishedAt).toLocaleDateString("bn-BD", {
-                          day: "numeric",
-                          month: "short",
-                        })}
-                      </p>
                     </div>
                   </Link>
                 )}
