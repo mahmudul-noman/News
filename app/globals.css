@@ -161,7 +161,7 @@
 
 /* Utility classes */
 .container-news {
-  max-width: 1300px;
+  max-width: 1400px;
   @apply mx-auto px-4 sm:px-6 lg:px-8;
 }
 
