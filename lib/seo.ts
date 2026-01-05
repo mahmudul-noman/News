@@ -16,8 +16,8 @@ interface ConstructMetadataProps {
 }
 
 export function constructMetadata({
-  title = "Bangla News 24 - বাংলা নিউজ ২৪ | দেশের শীর্ষ খবর",
-  description = "Bangla News 24 - বাংলাদেশের সবচেয়ে বিশ্বস্ত অনলাইন নিউজ পোর্টাল। দেশ, বিদেশ, ব্যবসা, খেলা সহ সব ধরনের খবর পান লাইভ আপডেট সহ।",
+  title = "Bd Records Today - দেশের শীর্ষ খবর",
+  description = "Bd Records Today - বাংলাদেশের সবচেয়ে বিশ্বস্ত অনলাইন নিউজ পোর্টাল। দেশ, বিদেশ, ব্যবসা, খেলা সহ সব ধরনের খবর পান লাইভ আপডেট সহ।",
   image = "/og-image.png", // Default OG image
   icons = "/icon.png",
   noIndex = false,
@@ -25,7 +25,7 @@ export function constructMetadata({
   type = "website",
   publishedTime,
   modifiedTime,
-  authors = ["Bangla News 24"],
+  authors = ["Bd Records Today"],
 }: ConstructMetadataProps = {}): Metadata {
   return {
     title,
@@ -40,7 +40,7 @@ export function constructMetadata({
       ],
       type,
       url: canonicalUrl || BASE_URL,
-      siteName: "Bangla News 24",
+      siteName: "Bd Records Today",
       locale: "bn_BD",
       ...(publishedTime && { publishedTime }),
       ...(modifiedTime && { modifiedTime }),
@@ -51,7 +51,7 @@ export function constructMetadata({
       title,
       description,
       images: [image],
-      creator: "@banglanews24", // Example handle
+      creator: "@bdrecordstoday", // Example handle
     },
     icons,
     metadataBase: new URL(BASE_URL),

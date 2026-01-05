@@ -5,7 +5,7 @@ export async function GET() {
   const feed = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
-    <title>Bangla News 24</title>
+    <title>Bd Records Today</title>
     <link>${BASE_URL}</link>
     <description>বাংলাদেশের শীর্ষস্থানীয় অনলাইন নিউজ পোর্টাল</description>
     <language>bn</language>

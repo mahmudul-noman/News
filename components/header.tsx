@@ -41,7 +41,7 @@ export function Header() {
               <Link href="/" className="flex-shrink-0">
                 <Image
                   src="/logo.webp"
-                  alt="Bangla News 24"
+                  alt="Bd Records Today"
                   width={200}
                   height={60}
                   className="h-auto w-auto max-h-[60px]"

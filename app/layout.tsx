@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     locale: "bn_BD",
     url: "https://bdrecordstoday.com",
     siteName: "Bd Records Today",
-    title: "Bd Records Today - বাংলা নিউজ ২৪",
+    title: "Bd Records Today - দেশের শীর্ষ খবর",
     description: "বাংলাদেশের শীর্ষস্থানীয় অনলাইন নিউজ পোর্টাল",
   },
   twitter: {
@@ -56,7 +56,6 @@ export const metadata: Metadata = {
     title: "Bd Records Today",
     description: "বাংলাদেশের শীর্ষস্থানীয় অনলাইন নিউজ পোর্টাল",
   },
-  generator: 'v0.app'
 }
 
 export const viewport = {

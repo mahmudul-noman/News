@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   }
 
   return constructMetadata({
-    title: `${article.title} - Bangla News 24`,
+    title: `${article.title} - Bd Records Today`,
     description: article.description,
     image: article.image,
     publishedTime: article.publishedAt,

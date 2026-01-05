@@ -27,10 +27,10 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   }
 
   return {
-    title: `${category.name} - Bangla News 24`,
+    title: `${category.name} - Bd Records Today`,
     description: category.description,
     openGraph: {
-      title: `${category.name} - Bangla News 24`,
+      title: `${category.name} - Bd Records Today`,
       description: category.description,
     },
   }

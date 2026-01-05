@@ -14,7 +14,7 @@ import { sampleNews, sampleVideos } from "@/lib/news-data"
 import { AdBanner } from "@/components/ad-banner"
 
 export const metadata: Metadata = {
-  title: "বিডি রেকর্ডস টুডে - বাংলা নিউজ ২৪ | দেশের শীর্ষ খবর",
+  title: "বিডি রেকর্ডস টুডে - দেশের শীর্ষ খবর",
   description:
     "বিডি রেকর্ডস টুডে - বাংলাদেশের সবচেয়ে বিশ্বস্ত অনলাইন নিউজ পোর্টাল। দেশ, বিদেশ, ব্যবসা, খেলা সহ সব ধরনের খবর পান লাইভ আপডেট সহ।",
   openGraph: {
