@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { AdBanner } from "@/components/ad-banner"
+import { ShareButtons } from "@/components/share-buttons"
 import { sampleNews } from "@/lib/news-data"
 import { constructMetadata } from "@/lib/seo"
 import { VerticalNewsTicker } from "@/components/vertical-news-ticker"
@@ -75,7 +76,7 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
     <main className="bg-white">
       <Header />
 
-      <div className="container-news py-4">
+      <div className="container-news py-2">
         <AdBanner />
       </div>
 
@@ -128,13 +129,8 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
               </p>
 
               {/* In-Content Ad Section 1 */}
-              <div className="my-8 bg-gray-50 border border-gray-200 rounded-lg p-4 flex justify-center items-center h-[250px] relative overflow-hidden">
-                <div className="text-center z-10">
-                  <p className="text-gray-400 font-semibold mb-2">বিজ্ঞাপন</p>
-                  <div className="w-[300px] h-[200px] bg-gray-200 flex items-center justify-center rounded">
-                    <span className="text-gray-500 text-sm">300 x 200 Ad</span>
-                  </div>
-                </div>
+              <div className="my-4">
+                <AdBanner />
               </div>
 
               <div className="text-gray-800 leading-relaxed text-base md:text-lg mb-6 whitespace-pre-wrap">
@@ -144,44 +140,28 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
               </div>
 
               {/* In-Content Ad Section 2 */}
-              <div className="my-8 bg-gray-50 border border-gray-200 rounded-lg p-4 flex justify-center items-center h-[200px] relative overflow-hidden">
-                <div className="text-center z-10">
-                  <p className="text-gray-400 font-semibold mb-2">বিজ্ঞাপন</p>
-                  <div className="w-[300px] h-[150px] bg-gray-200 flex items-center justify-center rounded">
-                    <span className="text-gray-500 text-sm">300 x 150 Ad</span>
-                  </div>
-                </div>
+              <div className="my-4">
+                <AdBanner />
               </div>
             </div>
 
-            {/* Share Section */}
-            <div className="py-6 border-t border-b border-gray-300 mb-8">
-              <p className="text-sm font-semibold text-gray-700 mb-3">শেয়ার করুন:</p>
-              <div className="flex gap-3">
-                <button className="bg-[#3b5998] text-white px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
-                  Facebook
-                </button>
-                <button className="bg-[#1DA1F2] text-white px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
-                  Twitter
-                </button>
-                <button className="bg-[#25D366] text-white px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
-                  WhatsApp
-                </button>
-              </div>
+            <div className="py-6 border-t border-b border-gray-300 mb-8 flex items-center gap-4">
+              <p className="text-lg font-semibold text-gray-800">শেয়ার করুন :</p>
+              <ShareButtons />
             </div>
 
             {/* Tags */}
             {article.tags.length > 0 && (
               <div className="mb-8 pb-8 border-b border-gray-300">
-                <p className="text-sm font-semibold text-gray-700 mb-3">ট্যাগ:</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap items-center gap-6">
+                  <p className="text-lg text-gray-600">টপিক:</p>
                   {article.tags.map((tag) => (
                     <Link
                       key={tag}
                       href={`/search?tag=${tag}`}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-red-100 hover:text-red-600 transition-colors border border-gray-200"
+                      className="text-lg text-gray-800 hover:text-red-600 transition-colors"
                     >
-                      #{tag}
+                      {tag}
                     </Link>
                   ))}
                 </div>
@@ -217,8 +197,7 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
               <span className="text-gray-300 text-sm">300 x 200</span>
             </div>
 
-            {/* Most Read 7 News in Y axis scroll */}
-            <VerticalNewsTicker title="সর্বাধিক পঠিত" news={mostReadNews} />
+
 
             {/* Ad 4 */}
             <div className="w-full bg-gray-50 border border-gray-200 h-[300px] flex flex-col items-center justify-center rounded-lg relative">
@@ -231,20 +210,32 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
         </div>
 
         {/* Related News Section */}
-        <section className="mt-12 pt-8 border-t border-gray-200">
-          {/* 4 News Card in a Row */}
-          {relatedArticlesRow.length > 0 && (
-            <RelatedNewsRow news={relatedArticlesRow} />
-          )}
+        <section className="container-news py-8 mt-8 border-t border-gray-200">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Related News - Left Column */}
+            <div className="lg:col-span-8">
+              {/* 4 News Card in a Row */}
+              {relatedArticlesRow.length > 0 && (
+                <RelatedNewsRow news={relatedArticlesRow} />
+              )}
 
-          {/* Related News with some details */}
-          {relatedArticlesList.length > 0 && (
-            <div className="mt-8">
-              <h3 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 inline-block">আরও পড়ুন</h3>
-              <div className="w-full h-[1px] bg-gray-200 mb-6 -mt-[1px]"></div>
-              <RelatedNewsDetailList news={relatedArticlesList} />
+              {/* Related News with some details */}
+              {relatedArticlesList.length > 0 && (
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 inline-block">আরও পড়ুন</h3>
+                  <div className="w-full h-[1px] bg-gray-200 mb-6 -mt-[1px]"></div>
+                  <RelatedNewsDetailList news={relatedArticlesList} />
+                </div>
+              )}
             </div>
-          )}
+
+            {/* Sticky Most Read - Right Column */}
+            <aside className="lg:col-span-4 relative">
+              <div className="sticky top-24">
+                <VerticalNewsTicker title="সর্বাধিক পঠিত" news={mostReadNews} />
+              </div>
+            </aside>
+          </div>
         </section>
 
       </article>
