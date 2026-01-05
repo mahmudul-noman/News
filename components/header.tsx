@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronDown, ThumbsUp } from "lucide-react"
+import { ChevronDown, Home, LucideHome, ThumbsUp } from "lucide-react"
 import { useState } from "react"
 import { AdBanner } from "./ad-banner"
 import { sampleNews } from "@/lib/news-data"
@@ -96,7 +96,7 @@ export function Header() {
         <div className="container-news">
           <nav className="flex items-center justify-between py-3 overflow-x-auto">
             <Link href="/" className="flex items-center gap-2 text-gray-700 hover:text-red-600 flex-shrink-0">
-              <span className="text-xl">🏠</span>
+              <LucideHome size={20} />
               <span className="hidden sm:inline text-base">সর্বশেষ</span>
             </Link>
 
