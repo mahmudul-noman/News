@@ -77,7 +77,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <Header />
       
       <div className="container-news py-8">
-        {/* Category Header and Advertisement Section */}
+        {/* Ads / Banner Section */}
         <AdBanner />
 
         {/* Hero Section: Left - Category Top News | Right - 2 News + 2 Ads Grid */}
@@ -167,6 +167,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             </div>
           </div>
         </div>
+
+        {/* Ads / Banner Section */}
+        <AdBanner />
 
         {gridArticles.length > 0 && (
           <NewsGrid articles={gridArticles} columns={4} title="আরও খবর" showAds={true} />
