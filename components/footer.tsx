@@ -118,7 +118,7 @@ export function Footer() {
 
         {/* Copyright Section */}
         <div className="border-t border-gray-100 pt-6 pb-4 text-center text-sm text-gray-500 space-y-2">
-          <p>স্বত্ব © ২০২৬ বিডি রেকর্ডস টুডে | সম্পাদক ও প্রকাশক: আরিফ শাহরিয়ার</p>
+          <p>স্বত্ব © ২০২৬ বিডি রেকর্ডস টুডে</p>
         </div>
       </div>
     </footer>

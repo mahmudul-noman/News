@@ -5,6 +5,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { AdBanner } from "@/components/ad-banner"
 import { ShareButtons } from "@/components/share-buttons"
+import { ArticleSidebarAd } from "@/components/article-sidebar-ad"
 import { sampleNews } from "@/lib/news-data"
 import { constructMetadata } from "@/lib/seo"
 import { VerticalNewsTicker } from "@/components/vertical-news-ticker"
@@ -56,11 +57,19 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
   }
 
   // Filter related articles (same category, excluding current)
-  const relatedArticles = sampleNews
+  let relatedArticles = sampleNews
     .filter((news) => news.categorySlug === article.categorySlug && news.id !== article.id)
 
+  // If fewer than 7 related articles, fill with other latest news
+  if (relatedArticles.length < 7) {
+    const otherNews = sampleNews.filter(
+      (news) => news.categorySlug !== article.categorySlug && news.id !== article.id
+    )
+    relatedArticles = [...relatedArticles, ...otherNews].slice(0, 10)
+  }
+
   const relatedArticlesRow = relatedArticles.slice(0, 4)
-  const relatedArticlesList = relatedArticles.slice(4, 9)
+  const relatedArticlesList = relatedArticles.slice(4, 8) // Ensure 4 items for list if available
 
   // Latest news (all categories, sorted by date desc)
   const latestNews = [...sampleNews]
@@ -81,39 +90,41 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
       </div>
 
       <article className="container-news py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Main Content - Left Column */}
-          <div className="lg:col-span-8">
-            {/* Article Header */}
-            <div className="mb-8">
-              <p className="text-red-600 font-bold text-sm mb-3 inline-block px-3 py-1 bg-red-50 rounded">
-                {article.category}
-              </p>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance leading-tight">
-                {article.title}
-              </h1>
+        {/* Article Header */}
+        <div className="mb-8">
+          <p className="text-red-600 font-bold text-sm mb-3 inline-block px-3 py-1 bg-red-50 rounded">
+            {article.category}
+          </p>
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance leading-tight">
+            {article.title}
+          </h1>
 
-              {/* Meta Info */}
-              <div className="flex flex-wrap items-center gap-4 text-xs md:text-sm text-gray-600 pb-4 border-b border-gray-300">
-                <span className="flex items-center gap-1">
-                  <span className="font-semibold">লেখক:</span> {article.author || "নিজস্ব প্রতিবেদক"}
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="font-semibold"> | </span>
-                  {new Date(article.publishedAt).toLocaleDateString("bn-BD", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </span>
-                <span className="flex items-center gap-1 ml-auto">
-                  <span className="font-semibold">দেখা হয়েছে:</span> {article.views}
-                </span>
-              </div>
-            </div>
+          {/* Meta Info */}
+          <div className="flex flex-wrap items-center gap-4 text-xs md:text-sm text-gray-600 pb-4 border-b border-gray-300">
+            <span className="flex items-center gap-1">
+              <span className="font-semibold">লেখক:</span> {article.author || "নিজস্ব প্রতিবেদক"}
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="font-semibold"> | </span>
+              {new Date(article.publishedAt).toLocaleDateString("bn-BD", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </span>
+            <span className="flex items-center gap-1 ml-auto">
+              <span className="font-semibold">দেখা হয়েছে:</span> {article.views}
+            </span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Main Content - Left Column */}
+          <div className="lg:col-span-9">
+
 
             {/* Featured Image */}
-            <div className="mb-8 rounded-lg overflow-hidden shadow-md">
+            <div className="mb-8 overflow-hidden shadow-md">
               <img
                 src={article.image || "/placeholder.svg"}
                 alt={article.title}
@@ -152,7 +163,7 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
 
             {/* Tags */}
             {article.tags.length > 0 && (
-              <div className="mb-8 pb-8 border-b border-gray-300">
+              <div className="mb-8 pb-8 border-b border-gray-200">
                 <div className="flex flex-wrap items-center gap-6">
                   <p className="text-lg text-gray-600">টপিক:</p>
                   {article.tags.map((tag) => (
@@ -168,52 +179,8 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
               </div>
             )}
 
-          </div>
-
-          {/* Sidebar - Right Column */}
-          <aside className="lg:col-span-4 space-y-8">
-
-            {/* Ad 1 */}
-            <div className="w-full bg-gray-50 border border-gray-200 h-[300px] flex flex-col items-center justify-center rounded-lg relative">
-              <p className="text-gray-400 font-semibold absolute top-2 right-2 text-xs">Ad</p>
-              <span className="text-gray-400 font-bold text-xl">Ad Content</span>
-              <span className="text-gray-300 text-sm">300 x 250</span>
-            </div>
-
-            {/* Ad 2 */}
-            <div className="w-full bg-gray-50 border border-gray-200 h-[200px] flex flex-col items-center justify-center rounded-lg relative">
-              <p className="text-gray-400 font-semibold absolute top-2 right-2 text-xs">Ad</p>
-              <span className="text-gray-400 font-bold text-xl">Ad Content</span>
-              <span className="text-gray-300 text-sm">300 x 150</span>
-            </div>
-
-            {/* Latest 7 News in Y axis scroll */}
-            <VerticalNewsTicker title="সর্বশেষ খবর" news={latestNews} />
-
-            {/* Ad 3 */}
-            <div className="w-full bg-gray-50 border border-gray-200 h-[250px] flex flex-col items-center justify-center rounded-lg relative">
-              <p className="text-gray-400 font-semibold absolute top-2 right-2 text-xs">Ad</p>
-              <span className="text-gray-400 font-bold text-xl">Ad Content</span>
-              <span className="text-gray-300 text-sm">300 x 200</span>
-            </div>
-
-
-
-            {/* Ad 4 */}
-            <div className="w-full bg-gray-50 border border-gray-200 h-[300px] flex flex-col items-center justify-center rounded-lg relative">
-              <p className="text-gray-400 font-semibold absolute top-2 right-2 text-xs">Ad</p>
-              <span className="text-gray-400 font-bold text-xl">Ad Content</span>
-              <span className="text-gray-300 text-sm">300 x 250</span>
-            </div>
-
-          </aside>
-        </div>
-
-        {/* Related News Section */}
-        <section className="container-news py-8 mt-8 border-t border-gray-200">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Related News - Left Column */}
-            <div className="lg:col-span-8">
+            {/* Related News Section */}
+            <div className="py-2 mt-2">
               {/* 4 News Card in a Row */}
               {relatedArticlesRow.length > 0 && (
                 <RelatedNewsRow news={relatedArticlesRow} />
@@ -229,14 +196,30 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
               )}
             </div>
 
-            {/* Sticky Most Read - Right Column */}
-            <aside className="lg:col-span-4 relative">
-              <div className="sticky top-24">
-                <VerticalNewsTicker title="সর্বাধিক পঠিত" news={mostReadNews} />
-              </div>
-            </aside>
           </div>
-        </section>
+
+          {/* Sidebar - Right Column */}
+          <aside className="lg:col-span-3 space-y-8">
+
+            {/* Ad 1 */}
+            <ArticleSidebarAd height="h-[300px]" sizeLabel="300 x 250" />
+
+            {/* Ad 2 */}
+            <ArticleSidebarAd height="h-[200px]" sizeLabel="300 x 150" />
+
+            {/* Latest 7 News in Y axis scroll */}
+            <VerticalNewsTicker title="সর্বশেষ খবর" news={latestNews} />
+
+            {/* Ad 3 */}
+            <ArticleSidebarAd height="h-[250px]" sizeLabel="300 x 200" />
+
+            {/* Sticky Most Read */}
+            <div className="sticky top-24">
+              <VerticalNewsTicker title="সর্বাধিক পঠিত" news={mostReadNews} />
+            </div>
+
+          </aside>
+        </div>
 
       </article>
 

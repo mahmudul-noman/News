@@ -25,7 +25,7 @@ export function RelatedNewsRow({ news }: RelatedNewsRowProps) {
                     <Link
                         key={item.id}
                         href={`/category/${item.categorySlug}/${item.slug}`}
-                        className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-200"
+                        className="group bg-white overflow-hidden"
                     >
                         <div className="relative aspect-video bg-gray-200 overflow-hidden">
                             <Image
@@ -35,7 +35,7 @@ export function RelatedNewsRow({ news }: RelatedNewsRowProps) {
                                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                         </div>
-                        <div className="p-3">
+                        <div className="pt-1">
                             <h4 className="text-sm font-semibold text-gray-800 line-clamp-2 group-hover:text-red-600 transition-colors">
                                 {item.title}
                             </h4>
