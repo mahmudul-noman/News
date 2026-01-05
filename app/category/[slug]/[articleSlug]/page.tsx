@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
@@ -6,8 +5,10 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { AdBanner } from "@/components/ad-banner"
 import { sampleNews } from "@/lib/news-data"
-
 import { constructMetadata } from "@/lib/seo"
+import { VerticalNewsTicker } from "@/components/vertical-news-ticker"
+import { RelatedNewsRow } from "@/components/related-news-row"
+import { RelatedNewsDetailList } from "@/components/related-news-list"
 
 interface CategoryPageProps {
   params: Promise<{
@@ -53,19 +54,34 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
     notFound()
   }
 
+  // Filter related articles (same category, excluding current)
   const relatedArticles = sampleNews
     .filter((news) => news.categorySlug === article.categorySlug && news.id !== article.id)
-    .slice(0, 4)
+
+  const relatedArticlesRow = relatedArticles.slice(0, 4)
+  const relatedArticlesList = relatedArticles.slice(4, 9)
+
+  // Latest news (all categories, sorted by date desc)
+  const latestNews = [...sampleNews]
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .slice(0, 7)
+
+  // Most read news (all categories, sorted by views desc)
+  const mostReadNews = [...sampleNews]
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 7)
 
   return (
     <main className="bg-white">
       <Header />
 
-      <AdBanner />
+      <div className="container-news py-4">
+        <AdBanner />
+      </div>
 
       <article className="container-news py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Main Content - Left Column */}
           <div className="lg:col-span-8">
             {/* Article Header */}
             <div className="mb-8">
@@ -79,18 +95,18 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
               {/* Meta Info */}
               <div className="flex flex-wrap items-center gap-4 text-xs md:text-sm text-gray-600 pb-4 border-b border-gray-300">
                 <span className="flex items-center gap-1">
-                  <span className="font-semibold">লেখক:</span> {article.author}
+                  <span className="font-semibold">লেখক:</span> {article.author || "নিজস্ব প্রতিবেদক"}
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="font-semibold">প্রকাশিত:</span>
+                  <span className="font-semibold"> | </span>
                   {new Date(article.publishedAt).toLocaleDateString("bn-BD", {
                     day: "numeric",
                     month: "long",
                     year: "numeric",
                   })}
                 </span>
-                <span className="flex items-center gap-1">
-                  <span className="font-semibold">দেখা হয়েছে:</span> {article.views.toLocaleString("bn-BD")}
+                <span className="flex items-center gap-1 ml-auto">
+                  <span className="font-semibold">দেখা হয়েছে:</span> {article.views}
                 </span>
               </div>
             </div>
@@ -100,9 +116,9 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
               <img
                 src={article.image || "/placeholder.svg"}
                 alt={article.title}
-                className="w-full h-auto object-cover max-h-96"
+                className="w-full h-auto object-cover max-h-[500px]"
               />
-              <p className="text-xs text-gray-500 mt-2">ছবিটি শুধুমাত্র প্রতীকী।</p>
+              <p className="text-xs text-gray-500 mt-2 p-1">ছবিটি শুধুমাত্র প্রতীকী।</p>
             </div>
 
             {/* Article Content */}
@@ -112,36 +128,45 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
               </p>
 
               {/* In-Content Ad Section 1 */}
-              <div className="my-8 bg-yellow-100 border-2 border-yellow-400 rounded-lg p-4 text-center">
-                <p className="text-gray-600 text-sm mb-2 font-semibold">বিজ্ঞাপন</p>
-                <div className="bg-gradient-to-r from-yellow-300 to-yellow-200 h-32 rounded flex items-center justify-center">
-                  <p className="text-gray-500 text-sm">বিজ্ঞাপন স্থান - ৩০০x২৫০</p>
+              <div className="my-8 bg-gray-50 border border-gray-200 rounded-lg p-4 flex justify-center items-center h-[250px] relative overflow-hidden">
+                <div className="text-center z-10">
+                  <p className="text-gray-400 font-semibold mb-2">বিজ্ঞাপন</p>
+                  <div className="w-[300px] h-[200px] bg-gray-200 flex items-center justify-center rounded">
+                    <span className="text-gray-500 text-sm">300 x 200 Ad</span>
+                  </div>
                 </div>
               </div>
 
-              <p className="text-gray-800 leading-relaxed text-base md:text-lg mb-6">{article.content}</p>
+              <div className="text-gray-800 leading-relaxed text-base md:text-lg mb-6 whitespace-pre-wrap">
+                {article.content}
+                <br /><br />
+                বিস্তারিত সংবাদের জন্য চোখ রাখুন আমাদের ওয়েবসাইটে। আমরা সর্বদা সত্য ও বস্তুনিষ্ঠ সংবাদ প্রকাশের চেষ্টা করি। আমাদের সাথে থাকার জন্য ধন্যবাদ।
+              </div>
 
               {/* In-Content Ad Section 2 */}
-              <div className="my-8 bg-green-100 border-2 border-green-400 rounded-lg p-4 text-center">
-                <p className="text-gray-600 text-sm mb-2 font-semibold">আমাদের অফার দেখুন</p>
-                <div className="bg-gradient-to-r from-green-300 to-green-200 h-24 rounded flex items-center justify-center">
-                  <p className="text-gray-500 text-sm">প্রচারণা স্থান</p>
+              <div className="my-8 bg-gray-50 border border-gray-200 rounded-lg p-4 flex justify-center items-center h-[200px] relative overflow-hidden">
+                <div className="text-center z-10">
+                  <p className="text-gray-400 font-semibold mb-2">বিজ্ঞাপন</p>
+                  <div className="w-[300px] h-[150px] bg-gray-200 flex items-center justify-center rounded">
+                    <span className="text-gray-500 text-sm">300 x 150 Ad</span>
+                  </div>
                 </div>
               </div>
-
-              <p className="text-gray-800 leading-relaxed text-base md:text-lg">
-                এটি একটি নমুনা খবর। বাস্তব খবরগুলি আরও বিস্তারিত হবে এবং উপযুক্ত সংবাদ সংস্থা থেকে সংগৃহীত হবে। প্রতিটি নিবন্ধ সাবধানে
-                সম্পাদিত এবং যাচাই করা হয়।
-              </p>
             </div>
 
             {/* Share Section */}
             <div className="py-6 border-t border-b border-gray-300 mb-8">
               <p className="text-sm font-semibold text-gray-700 mb-3">শেয়ার করুন:</p>
               <div className="flex gap-3">
-                <button className="text-blue-600 hover:text-blue-800 text-sm font-semibold">ফেসবুক</button>
-                <button className="text-blue-400 hover:text-blue-600 text-sm font-semibold">টুইটার</button>
-                <button className="text-red-600 hover:text-red-800 text-sm font-semibold">হোয়াটসঅ্যাপ</button>
+                <button className="bg-[#3b5998] text-white px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
+                  Facebook
+                </button>
+                <button className="bg-[#1DA1F2] text-white px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
+                  Twitter
+                </button>
+                <button className="bg-[#25D366] text-white px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
+                  WhatsApp
+                </button>
               </div>
             </div>
 
@@ -154,7 +179,7 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
                     <Link
                       key={tag}
                       href={`/search?tag=${tag}`}
-                      className="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-100 hover:text-red-600 transition-colors"
+                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-red-100 hover:text-red-600 transition-colors border border-gray-200"
                     >
                       #{tag}
                     </Link>
@@ -163,86 +188,65 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
               </div>
             )}
 
-            {/* Related Articles */}
-            {relatedArticles.length > 0 && (
-              <section className="pt-8">
-                <h3 className="text-2xl font-bold mb-6 pb-3 border-b-4 border-red-600">সংশ্লিষ্ট খবর</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {relatedArticles.map((related) => (
-                    <Link
-                      key={related.id}
-                      href={`/category/${related.categorySlug}/${related.slug}`}
-                      className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-200"
-                    >
-                      <div className="relative h-40 bg-gray-200 overflow-hidden">
-                        <img
-                          src={related.thumbnail || related.image}
-                          alt={related.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                        />
-                      </div>
-                      <div className="p-3">
-                        <p className="text-red-600 text-xs font-semibold mb-1">{related.category}</p>
-                        <h4 className="font-semibold text-sm text-foreground line-clamp-2 group-hover:text-red-600 transition-colors text-balance">
-                          {related.title}
-                        </h4>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            )}
           </div>
 
-          {/* Sidebar Ads */}
-          <aside className="lg:col-span-4">
-            <div className="sticky top-20 space-y-4">
-              {/* Ad Slot 1 - Yellow */}
-              <div className="bg-gradient-to-b from-yellow-300 to-yellow-200 rounded-lg overflow-hidden shadow-md border-2 border-yellow-400">
-                <div className="h-80 flex items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-gray-700 font-bold mb-2">বিশেষ অফার</p>
-                    <p className="text-gray-600 text-sm">বিজ্ঞাপন স্থান</p>
-                    <p className="text-gray-500 text-xs">৩০০x৪০০</p>
-                  </div>
-                </div>
-              </div>
+          {/* Sidebar - Right Column */}
+          <aside className="lg:col-span-4 space-y-8">
 
-              {/* Ad Slot 2 - Pink */}
-              <div className="bg-gradient-to-b from-pink-300 to-pink-200 rounded-lg overflow-hidden shadow-md border-2 border-pink-400">
-                <div className="h-64 flex items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-gray-700 font-bold mb-2">নতুন পণ্য</p>
-                    <p className="text-gray-600 text-sm">বিজ্ঞাপন স্থান</p>
-                    <p className="text-gray-500 text-xs">৩০০x৩২০</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Ad Slot 3 - Blue */}
-              <div className="bg-gradient-to-b from-blue-300 to-blue-200 rounded-lg overflow-hidden shadow-md border-2 border-blue-400">
-                <div className="h-72 flex items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-gray-700 font-bold mb-2">আমাদের সেবা</p>
-                    <p className="text-gray-600 text-sm">বিজ্ঞাপন স্থান</p>
-                    <p className="text-gray-500 text-xs">৩০০x৩৬০</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Ad Slot 4 - Red */}
-              <div className="bg-gradient-to-b from-red-300 to-red-200 rounded-lg overflow-hidden shadow-md border-2 border-red-400">
-                <div className="h-56 flex items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-gray-700 font-bold mb-2">বিশেষ ছাড়</p>
-                    <p className="text-gray-600 text-sm">বিজ্ঞাপন স্থান</p>
-                    <p className="text-gray-500 text-xs">৩০০x২৮০</p>
-                  </div>
-                </div>
-              </div>
+            {/* Ad 1 */}
+            <div className="w-full bg-gray-50 border border-gray-200 h-[300px] flex flex-col items-center justify-center rounded-lg relative">
+              <p className="text-gray-400 font-semibold absolute top-2 right-2 text-xs">Ad</p>
+              <span className="text-gray-400 font-bold text-xl">Ad Content</span>
+              <span className="text-gray-300 text-sm">300 x 250</span>
             </div>
+
+            {/* Ad 2 */}
+            <div className="w-full bg-gray-50 border border-gray-200 h-[200px] flex flex-col items-center justify-center rounded-lg relative">
+              <p className="text-gray-400 font-semibold absolute top-2 right-2 text-xs">Ad</p>
+              <span className="text-gray-400 font-bold text-xl">Ad Content</span>
+              <span className="text-gray-300 text-sm">300 x 150</span>
+            </div>
+
+            {/* Latest 7 News in Y axis scroll */}
+            <VerticalNewsTicker title="সর্বশেষ খবর" news={latestNews} />
+
+            {/* Ad 3 */}
+            <div className="w-full bg-gray-50 border border-gray-200 h-[250px] flex flex-col items-center justify-center rounded-lg relative">
+              <p className="text-gray-400 font-semibold absolute top-2 right-2 text-xs">Ad</p>
+              <span className="text-gray-400 font-bold text-xl">Ad Content</span>
+              <span className="text-gray-300 text-sm">300 x 200</span>
+            </div>
+
+            {/* Most Read 7 News in Y axis scroll */}
+            <VerticalNewsTicker title="সর্বাধিক পঠিত" news={mostReadNews} />
+
+            {/* Ad 4 */}
+            <div className="w-full bg-gray-50 border border-gray-200 h-[300px] flex flex-col items-center justify-center rounded-lg relative">
+              <p className="text-gray-400 font-semibold absolute top-2 right-2 text-xs">Ad</p>
+              <span className="text-gray-400 font-bold text-xl">Ad Content</span>
+              <span className="text-gray-300 text-sm">300 x 250</span>
+            </div>
+
           </aside>
         </div>
+
+        {/* Related News Section */}
+        <section className="mt-12 pt-8 border-t border-gray-200">
+          {/* 4 News Card in a Row */}
+          {relatedArticlesRow.length > 0 && (
+            <RelatedNewsRow news={relatedArticlesRow} />
+          )}
+
+          {/* Related News with some details */}
+          {relatedArticlesList.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600 inline-block">আরও পড়ুন</h3>
+              <div className="w-full h-[1px] bg-gray-200 mb-6 -mt-[1px]"></div>
+              <RelatedNewsDetailList news={relatedArticlesList} />
+            </div>
+          )}
+        </section>
+
       </article>
 
       <Footer />
