@@ -114,7 +114,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${siyamRupali.variable} ${geist.className} antialiased bg-background text-foreground`}
+        className={`${siyamRupali.variable} font-sans antialiased bg-background text-foreground`}
       >
         {children}
         <Analytics />
