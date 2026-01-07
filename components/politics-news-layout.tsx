@@ -19,7 +19,7 @@ export function PoliticsNewsLayout({ articles, title, categorySlug }: PoliticsNe
     if (!mainArticle) return null
 
     return (
-        <div className="my-8">
+        <div className="my-2">
             <SectionHeader title={title} categorySlug={categorySlug} />
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-stretch">

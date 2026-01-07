@@ -23,18 +23,9 @@ export function NewsGrid({ articles, showAds = true, columns = 4, title, categor
       4: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
     } as const)[columns] || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
 
-  // Logic to interleave Ads
-  // Row 1 Last Col = Ad 1
-  // Row 2 Last Col = Ad 2
-  // We need to construct a mixed array for rendering
-
   const items: (NewsArticle | { type: 'ad', id: number })[] = []
 
   if (showAds) {
-    // Slot 1: articles[0] to articles[col-2]
-    // Ad 1 at col-1
-    // Slot 2: articles[col-1] to articles[2*col - 3]
-    // Ad 2 at 2*col - 1
 
     let articleIndex = 0;
 
@@ -61,7 +52,7 @@ export function NewsGrid({ articles, showAds = true, columns = 4, title, categor
 
   return (
     <>
-      <div className="my-6">
+      <div className="my-2">
         <SectionHeader title={title} categorySlug={categorySlug} />
 
         <div className={`grid ${gridColsClass} gap-6`}>

@@ -17,7 +17,7 @@ export function SpecialNewsGrid({ articles, title, categorySlug }: SpecialNewsGr
     const gridColsClass = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
 
     return (
-        <div className="my-8">
+        <div className="my-2">
             <SectionHeader title={title} categorySlug={categorySlug} />
 
             <div className={`grid ${gridColsClass} gap-6`}>

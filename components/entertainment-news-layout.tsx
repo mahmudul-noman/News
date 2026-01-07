@@ -21,7 +21,7 @@ export function EntertainmentNewsLayout({ articles, title, categorySlug }: Enter
     if (!mainArticle) return null
 
     return (
-        <div className="my-8 text-black">
+        <div className="my-2 text-black">
             <SectionHeader title={title} categorySlug={categorySlug} />
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-stretch">

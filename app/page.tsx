@@ -93,7 +93,7 @@ export default function Home() {
         <AdBanner />
       </div>
 
-      <section className="container-news py-6 border-t border-gray-100">
+      <section className="container-news py-2">
         <SpecialNewsGrid
           articles={sampleNews.filter(a => a.categorySlug === "national").slice(0, 4)}
           title="স্পেশাল রিপোর্ট"
@@ -101,7 +101,7 @@ export default function Home() {
         />
       </section>
 
-      <section className="container-news py-6 border-t border-gray-100">
+      <section className="container-news py-2">
         <PoliticsNewsLayout
           articles={sampleNews.filter(a => a.categorySlug === "politics").slice(0, 5)}
           title="রাজনীতি"
@@ -113,7 +113,7 @@ export default function Home() {
         <AdBanner />
       </div>
 
-      <section className="container-news py-6">
+      <section className="container-news py-2">
         <SportNewsLayout
           mainArticles={sampleNews.filter(a => a.categorySlug === "sports").slice(0, 6)}
           title="খেলাধুলা"
@@ -125,7 +125,7 @@ export default function Home() {
         <AdBanner />
       </div>
 
-      <section className="container-news py-6 border-t border-gray-100">
+      <section className="container-news py-2">
         <EntertainmentNewsLayout
           articles={sampleNews.filter(a => a.categorySlug === "entertainment").slice(0, 9)}
           title="বিনোদন"
