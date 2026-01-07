@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  const latestNews = sampleNews.slice(0, 12)
+  const latestNews = sampleNews.slice(0, 14)
   const featuredArticles = sampleNews
     .filter((a) => a.featured || a.id === "1")
     .slice(0, 10)
@@ -75,23 +75,17 @@ export default function Home() {
       <HeroSection featuredArticles={featuredArticles} />
 
       <div className="container-news py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          <section className="lg:col-span-3" aria-labelledby="latest-news">
-            <h2 id="latest-news" className="sr-only">
-              সর্বশেষ খবর
-            </h2>
-            <NewsGrid
-              articles={latestNews}
-              columns={3}
-              title="সর্বশেষ খবর"
-              showAds={true}
-            />
-          </section>
-
-          <aside className="lg:col-span-1">
-            <SidebarAds count={4} />
-          </aside>
-        </div>
+        <section aria-labelledby="latest-news">
+          <h2 id="latest-news" className="sr-only">
+            সর্বশেষ খবর
+          </h2>
+          <NewsGrid
+            articles={latestNews}
+            columns={4}
+            title="সর্বশেষ খবর"
+            showAds={true}
+          />
+        </section>
       </div>
 
       {/* Fixed-height Ad Wrapper (CLS Safe) */}
