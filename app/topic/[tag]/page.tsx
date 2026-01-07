@@ -55,24 +55,20 @@ export default async function TopicPage({ params }: TopicPageProps) {
                                 href={`/category/${item.categorySlug}/${item.slug}`}
                                 className="group bg-white overflow-hidden flex flex-col h-full"
                             >
-                                <div className="relative aspect-video bg-gray-100 overflow-hidden rounded-md mb-3">
+                                <div className="relative aspect-video bg-gray-100 overflow-hidden mb-3">
                                     <Image
                                         src={item.thumbnail || item.image || "/placeholder.svg"}
                                         alt={item.title}
                                         fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                        className="object-cover"
                                     />
                                 </div>
-                                <div className="flex-1">
-                                    <h2 className="text-lg font-semibold text-gray-800 line-clamp-2 group-hover:text-red-600 transition-colors leading-snug">
+                                <div className="flex-1 flex flex-col gap-2">
+                                    <h2 className="text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors leading-tight line-clamp-1">
                                         {item.title}
                                     </h2>
-                                    <p className="text-sm text-gray-500 mt-2">
-                                        {new Date(item.publishedAt).toLocaleDateString("bn-BD", {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric",
-                                        })}
+                                    <p className="text-base text-gray-700 line-clamp-3 leading-relaxed">
+                                        {item.description}
                                     </p>
                                 </div>
                             </Link>
