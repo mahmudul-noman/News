@@ -5,7 +5,7 @@ interface AdBannerProps {
 export function AdBanner({ className = "" }: AdBannerProps) {
   return (
     <div
-      className={`bg-gradient-to-r from-orange-300 via-orange-200 to-rose-100 p-3 text-center border border-orange-300 my-4 ${className}`}
+      className={`bg-gradient-to-r from-orange-300 via-orange-200 to-rose-100 p-3 text-center border border-orange-300 my-2 ${className}`}
     >
       <div className="flex items-center justify-between gap-4">
         <div className="text-left">
