@@ -169,7 +169,7 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
                   {article.tags.map((tag) => (
                     <Link
                       key={tag}
-                      href={`/search?tag=${tag}`}
+                      href={`/topic/${tag}`}
                       className="text-lg text-gray-800 hover:text-red-600 transition-colors"
                     >
                       {tag}

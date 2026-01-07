@@ -288,7 +288,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T13:00:00Z",
   featured: false,
   views: 5600,
-  tags: ["দলীয় সম্মেলন"],
+  tags: ["দলীয় সম্মেলন, ডলার"],
 },
 {
   id: "17",
@@ -305,7 +305,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T11:30:00Z",
   featured: false,
   views: 5900,
-  tags: ["সহিংসতা"],
+  tags: ["সহিংসতা, ডলার"],
 },
 {
   id: "18",
@@ -322,7 +322,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T10:00:00Z",
   featured: false,
   views: 5100,
-  tags: ["সংলাপ"],
+  tags: ["সংলাপ, ডিজিটাল"],
 },
 
 /* ===================== অর্থনীতি-বাণিজ্য (business) ===================== */
@@ -375,7 +375,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T15:00:00Z",
   featured: false,
   views: 9100,
-  tags: ["রপ্তানি"],
+  tags: ["রপ্তানি, ডিজিটাল"],
 },
 {
   id: "22",
@@ -392,7 +392,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T13:30:00Z",
   featured: false,
   views: 6400,
-  tags: ["ব্যাংক"],
+  tags: ["ব্যাংক, ডিজিটাল"],
 },
 {
   id: "23",
@@ -409,7 +409,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T11:00:00Z",
   featured: false,
   views: 10200,
-  tags: ["জ্বালানি"],
+  tags: ["জ্বালানি, ডিজিটাল"],
 },
 {
   id: "24",
@@ -426,7 +426,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T09:30:00Z",
   featured: false,
   views: 5800,
-  tags: ["এসএমই"],
+  tags: ["এসএমই, ডিজিটাল"],
 },
 
 /* ===================== আন্তর্জাতিক (international) ===================== */
@@ -445,7 +445,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T20:00:00Z",
   featured: true,
   views: 8300,
-  tags: ["মধ্যপ্রাচ্য"],
+  tags: ["মধ্যপ্রাচ্য, ডিজিটাল"],
 },
 {
   id: "26",
@@ -479,7 +479,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T16:30:00Z",
   featured: false,
   views: 7200,
-  tags: ["ইউরোপ"],
+  tags: ["ইউরোপ, ডিজিটাল"],
 },
 {
   id: "28",
@@ -496,7 +496,7 @@ export const sampleNews: NewsArticle[] = [
   updatedAt: "2026-01-02T14:00:00Z",
   featured: false,
   views: 5600,
-  tags: ["জাতিসংঘ"],
+  tags: ["জাতিসংঘ, ডিজিটাল"],
 },
 {
   id: "29",
