@@ -90,29 +90,29 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           {/* Left Column - Category Top News (Large Featured Article) */}
           {featuredArticle && (
             <div className="lg:col-span-6">
-              <article className="group flex flex-col overflow-hidden transition-shadow bg-white h-full">
-                <div className="relative w-full h-96 bg-gray-200 overflow-hidden">
-                  <img
-                    src={featuredArticle.image || "/placeholder.svg?height=400&width=600&query=featured news"}
-                    alt={featuredArticle.title}
-                    className="w-full h-full object-cover transition-transform duration-300"
-                  />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <Link href={getArticleLink(featuredArticle)}>
-                    <h3 className="text-3xl font-semibold text-foreground hover:text-primary transition-colors mb-3 line-clamp-3 leading-[2.75rem]">
+              <article className="group flex flex-col overflow-hidden transition-shadow bg-white h-full relative">
+                <Link href={getArticleLink(featuredArticle)} className="contents">
+                  <div className="relative w-full h-96 bg-gray-200 overflow-hidden">
+                    <img
+                      src={featuredArticle.image || "/placeholder.svg?height=400&width=600&query=featured news"}
+                      alt={featuredArticle.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center mt-4">
+                    <h3 className="text-3xl font-semibold text-foreground group-hover:text-red-600 transition-colors mb-3 line-clamp-3 leading-[2.75rem]">
                       {featuredArticle.title}
                     </h3>
-                  </Link>
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2 leading-[1.2rem]">{featuredArticle.description}</p>
-                  <p className="text-xs text-gray-500">
-                    {new Date(featuredArticle.publishedAt).toLocaleDateString("bn-BD", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </p>
-                </div>
+                    <p className="text-sm text-gray-600 mb-3 line-clamp-2 leading-[1.2rem]">{featuredArticle.description}</p>
+                    <p className="text-xs text-gray-500">
+                      {new Date(featuredArticle.publishedAt).toLocaleDateString("bn-BD", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </p>
+                  </div>
+                </Link>
               </article>
             </div>
           )}

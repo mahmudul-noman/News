@@ -33,21 +33,21 @@ export function EntertainmentNewsLayout({ articles, title, categorySlug }: Enter
                             className={`group flex gap-4 items-center justify-between ${index !== leftArticles.length - 1 ? "border-b border-gray-200" : ""
                                 } py-4 first:pt-0 last:pb-0 h-full`}
                         >
-                            <div className="flex-grow order-1">
-                                <Link href={getArticleLink(article)}>
-                                    <h3 className="font-medium text-lg leading-snug hover:text-red-600 transition-colors">
+                            <Link href={getArticleLink(article)} className="contents">
+                                <div className="flex-grow order-1">
+                                    <h3 className="font-medium text-lg leading-snug group-hover:text-red-600 transition-colors">
                                         {article.title}
                                     </h3>
-                                </Link>
-                            </div>
-                            <div className="relative w-24 h-16 flex-shrink-0 overflow-hidden rounded-md bg-gray-200 order-2">
-                                <Image
-                                    src={article.thumbnail || article.image}
-                                    alt={article.title}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
+                                </div>
+                                <div className="relative w-24 h-16 flex-shrink-0 overflow-hidden rounded-md bg-gray-200 order-2">
+                                    <Image
+                                        src={article.thumbnail || article.image}
+                                        alt={article.title}
+                                        fill
+                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                </div>
+                            </Link>
                         </article>
                     ))}
                 </div>
@@ -55,24 +55,24 @@ export function EntertainmentNewsLayout({ articles, title, categorySlug }: Enter
                 {/* Center Column: 1 Large News Item */}
                 <div className="lg:col-span-2 order-1 lg:order-2 h-full lg:px-6">
                     <article className="group h-full flex flex-col">
-                        <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg bg-gray-200 mb-4">
-                            <Image
-                                src={mainArticle.image} // Use main image for the big card
-                                alt={mainArticle.title}
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                        </div>
-                        <div className="flex flex-col flex-shrink-0">
-                            <Link href={getArticleLink(mainArticle)}>
-                                <h3 className="font-bold text-2xl md:text-3xl leading-tight hover:text-red-600 transition-colors mb-3">
+                        <Link href={getArticleLink(mainArticle)} className="flex flex-col h-full">
+                            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg bg-gray-200 mb-4">
+                                <Image
+                                    src={mainArticle.image} // Use main image for the big card
+                                    alt={mainArticle.title}
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                            </div>
+                            <div className="flex flex-col flex-shrink-0">
+                                <h3 className="font-bold text-2xl md:text-3xl leading-tight group-hover:text-red-600 transition-colors mb-3">
                                     {mainArticle.title}
                                 </h3>
-                            </Link>
-                            <p className="text-gray-600 text-lg leading-relaxed line-clamp-3">
-                                {mainArticle.description}
-                            </p>
-                        </div>
+                                <p className="text-gray-600 text-lg leading-relaxed line-clamp-3">
+                                    {mainArticle.description}
+                                </p>
+                            </div>
+                        </Link>
                     </article>
                 </div>
 
