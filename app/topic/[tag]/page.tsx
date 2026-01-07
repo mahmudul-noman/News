@@ -42,9 +42,6 @@ export default async function TopicPage({ params }: TopicPageProps) {
                     <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
                         বিষয়: <span className="text-red-600">{decodedTag}</span>
                     </h1>
-                    <p className="text-gray-600 mt-2">
-                        মোট {filteredNews.length} টি খবর পাওয়া গেছে
-                    </p>
                 </div>
 
                 {filteredNews.length > 0 ? (

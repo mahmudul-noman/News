@@ -164,16 +164,18 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
             {/* Tags */}
             {article.tags.length > 0 && (
               <div className="mb-8 pb-8 border-b border-gray-200">
-                <div className="flex flex-wrap items-center gap-6">
+                <div className="flex flex-wrap items-center gap-2">
                   <p className="text-lg text-gray-600">টপিক:</p>
-                  {article.tags.map((tag) => (
-                    <Link
-                      key={tag}
-                      href={`/topic/${tag}`}
-                      className="text-lg text-gray-800 hover:text-red-600 transition-colors"
-                    >
-                      {tag}
-                    </Link>
+                  {article.tags.flatMap(t => t.split(',')).map(t => t.trim()).filter(Boolean).map((tag, index, arr) => (
+                    <div key={tag} className="flex items-center">
+                      <Link
+                        href={`/topic/${tag}`}
+                        className="text-lg text-gray-800 hover:text-red-600 transition-colors"
+                      >
+                        {tag}
+                      </Link>
+                      {index < arr.length - 1 && <span className="text-lg text-gray-800">,</span>}
+                    </div>
                   ))}
                 </div>
               </div>

@@ -109,7 +109,7 @@ export function Header() {
               >
                 <Link
                   href={`/category/${cat.slug}`}
-                  className="px-3 py-2 text-base text-gray-700 hover:text-red-600 hover:bg-gray-100 rounded transition-colors whitespace-nowrap"
+                  className="px-3 py-2 text-base text-gray-700 hover:text-red-600 rounded transition-colors whitespace-nowrap"
                 >
                   {cat.name}
                 </Link>
