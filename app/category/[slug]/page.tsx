@@ -75,10 +75,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <main className="bg-white">
       <Header />
-      
-      <div className="container-news py-2">
+
+      <div className="container-news py-3">
         {/* Ads / Banner Section */}
         <AdBanner />
+
+        {/* Category Title */}
+        <div className="flex items-center gap-3 border-t border-gray-200 py-4">
+          <h1 className="text-2xl md:text-3xl font-bold text-red-600">{category.name}</h1>
+        </div>
 
         {/* Hero Section: Left - Category Top News | Right - 2 News + 2 Ads Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
