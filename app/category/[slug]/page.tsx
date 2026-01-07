@@ -76,7 +76,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <main className="bg-white">
       <Header />
       
-      <div className="container-news py-8">
+      <div className="container-news py-2">
         {/* Ads / Banner Section */}
         <AdBanner />
 
@@ -95,7 +95,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </div>
                 <div className="flex flex-col justify-center">
                   <Link href={getArticleLink(featuredArticle)}>
-                    <h3 className="text-lg font-semibold text-foreground hover:text-primary transition-colors mb-3 line-clamp-3 leading-[2.75rem]">
+                    <h3 className="text-3xl font-semibold text-foreground hover:text-primary transition-colors mb-3 line-clamp-3 leading-[2.75rem]">
                       {featuredArticle.title}
                     </h3>
                   </Link>
@@ -131,7 +131,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       />
                     </div>
                     <div className="flex-grow">
-                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-3 group-hover:text-red-600 transition-colors leading-[2.75rem]">
+                      <h3 className="font-semibold text-xl text-foreground line-clamp-2 group-hover:text-red-600 transition-colors leading-[2rem]">
                         {middleArticles[0].title}
                       </h3>
                     </div>
@@ -152,7 +152,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       />
                     </div>
                     <div className="flex-grow">
-                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-3 group-hover:text-red-600 transition-colors leading-[2.75rem]">
+                      <h3 className="font-semibold text-xl text-foreground line-clamp-2 group-hover:text-red-600 transition-colors leading-[2rem]">
                         {middleArticles[1].title}
                       </h3>
                     </div>

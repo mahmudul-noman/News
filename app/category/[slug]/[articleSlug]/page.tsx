@@ -89,7 +89,7 @@ export default async function ArticlePage({ params }: CategoryPageProps) {
         <AdBanner />
       </div>
 
-      <article className="container-news py-8">
+      <article className="container-news py-2">
         {/* Article Header */}
         <div className="mb-8">
           <p className="text-red-600 font-bold text-sm mb-3 inline-block px-3 py-1 bg-red-50 rounded">
