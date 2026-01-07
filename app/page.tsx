@@ -103,7 +103,7 @@ export default function Home() {
 
       <section className="container-news py-2">
         <PoliticsNewsLayout
-          articles={sampleNews.filter(a => a.categorySlug === "politics").slice(0, 5)}
+          articles={sampleNews.filter(a => a.categorySlug === "politics").slice(0, 6)}
           title="রাজনীতি"
           categorySlug="politics"
         />
