@@ -71,7 +71,10 @@ export default function Home() {
         }}
       />
 
+
       <Header />
+
+      {/* Hero Section - Featured News */}
       <HeroSection featuredArticles={featuredArticles} />
 
       <div className="container-news py-6">
@@ -133,13 +136,23 @@ export default function Home() {
         />
       </section>
 
-      <section className="container-news py-6">
+            {/* Fixed-height Ad Wrapper (CLS Safe) */}
+      <div className="container-news min-h-[90px]">
+        <AdBanner />
+      </div>
+
+      <section className="container-news py-2">
         <BusinessNewsLayout
           articles={sampleNews.filter(a => a.categorySlug === "business").slice(0, 7)}
           title="অর্থনীতি-বাণিজ্য"
           categorySlug="business"
         />
       </section>
+
+            {/* Fixed-height Ad Wrapper (CLS Safe) */}
+      <div className="container-news min-h-[90px]">
+        <AdBanner />
+      </div>
 
       <Footer />
     </main>

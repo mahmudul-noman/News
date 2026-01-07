@@ -16,7 +16,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
     <section className="bg-white">
       <div className="container-news my-4">
         {/* Ads / Banner Section */}
-        {/* <AdBanner /> */}
+        <AdBanner />
 
         {/* 3-Column Layout: Left Sidebar | Center Featured | Right Sidebar */}
         {articles.length > 0 && (
@@ -38,9 +38,12 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                       />
                     </div>
                     <div className="mt-1 flex-grow">
-                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-2 group-hover:text-red-600 transition-colors">
+                      <h3 className="font-semibold text-sm text-foreground line-clamp-2 group-hover:text-red-600 transition-colors">
                         {articles[0].title}
                       </h3>
+                      <p className="mt-1 text-sm text-gray-500 line-clamp-2">
+                        {articles[0].description}
+                      </p>
                     </div>
                   </Link>
                 )}
@@ -59,9 +62,12 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                       />
                     </div>
                     <div className="mt-1 flex-grow">
-                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-2 group-hover:text-red-600 transition-colors">
+                      <h3 className="font-semibold text-sm text-foreground line-clamp-2 group-hover:text-red-600 transition-colors">
                         {articles[1].title}
                       </h3>
+                      <p className="mt-1 text-sm text-gray-500 line-clamp-2">
+                        {articles[1].description}
+                      </p>
                     </div>
                   </Link>
                 )}
@@ -81,7 +87,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                     />
                   </div>
                   <div className="mt-1">
-                    <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-3 group-hover:text-red-600 transition-colors">
+                    <h3 className="font-semibold text-sm text-foreground line-clamp-3 group-hover:text-red-600 transition-colors">
                       {articles[2].title}
                     </h3>
                     <p className="mt-1 text-sm text-gray-500 line-clamp-2">
@@ -112,7 +118,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                     </h3>
                   </div>
                   <div className="mt-1">
-                    <p className="mt-1 text-base text-gray-500 line-clamp-3">
+                    <p className="mt-1 text-base text-gray-500 line-clamp-4">
                       {articles[3].description}
                     </p>
                   </div>
@@ -137,9 +143,12 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                       />
                     </div>
                     <div className="mt-1 flex-grow">
-                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-2 group-hover:text-red-600 transition-colors">
+                      <h3 className="font-semibold text-sm text-foreground line-clamp-2 group-hover:text-red-600 transition-colors">
                         {articles[1].title}
                       </h3>
+                      <p className="mt-1 text-sm text-gray-500 line-clamp-2">
+                        {articles[1].description}
+                      </p>
                     </div>
                   </Link>
                 )}
@@ -158,9 +167,12 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                       />
                     </div>
                     <div className="flex-grow mt-1">
-                      <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-2 group-hover:text-red-600 transition-colors">
+                      <h3 className="font-semibold text-sm text-foreground line-clamp-2 group-hover:text-red-600 transition-colors">
                         {articles[2].title}
                       </h3>
+                      <p className="mt-1 text-sm text-gray-500 line-clamp-2">
+                        {articles[2].description}
+                      </p>
                     </div>
                   </Link>
                 )}
@@ -180,7 +192,7 @@ export function HeroSection({ featuredArticles }: HeroSectionProps) {
                     />
                   </div>
                   <div className="mt-1">
-                    <h3 className="font-semibold text-[1.1rem] text-foreground line-clamp-3 group-hover:text-red-600 transition-colors">
+                    <h3 className="font-semibold text-sm text-foreground line-clamp-3 group-hover:text-red-600 transition-colors">
                       {articles[3].title}
                     </h3>
                   </div>
