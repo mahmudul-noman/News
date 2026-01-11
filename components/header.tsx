@@ -3,16 +3,31 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronDown, Home, LucideHome, ThumbsUp } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { AdBanner } from "./ad-banner"
-import { sampleNews } from "@/lib/news-data"
+import axios from "@/lib/axiosConfig"
+import { APINewsItem } from "@/types/news"
 
 export function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [pinnedNews, setPinnedNews] = useState<APINewsItem[]>([])
 
-  const latestNews = sampleNews
-    .filter(article => article.categorySlug === "latest")
-    .slice(0, 3)
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await axios.get("api/v1/news/pinned/?type=global");
+        if (response.data && response.data.success && Array.isArray(response.data.data)) {
+          // The API directly returns the pinned news list in response.data.data
+          const pinned: APINewsItem[] = response.data.data.slice(0, 3);
+          setPinnedNews(pinned);
+        }
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      }
+    };
+
+    fetchNews();
+  }, []);
 
   const categories = [
     { name: "সর্বশেষ", slug: "latest" },
@@ -50,15 +65,15 @@ export function Header() {
 
               {/* Featured Articles Preview */}
               <div className="hidden md:flex flex-1 items-center justify-center gap-4">
-                {latestNews.map((news) => (
+                {pinnedNews.map((news) => (
                   <Link
                     key={news.id}
-                    href={`/category/${news.categorySlug}/${news.slug}`}
+                    href={`/category/${news.category_slug}/${news.slug}`}
                     className="flex items-start gap-2 max-w-[220px] group"
                   >
                     <div className="w-16 h-12 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
                       <Image
-                        src={news.thumbnail || news.image}
+                        src={news.feature_image}
                         alt={news.title}
                         width={64}
                         height={48}

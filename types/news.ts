@@ -35,3 +35,23 @@ export interface VideoItem {
   publishedAt: string
   views: number
 }
+
+export interface APINewsItem {
+  id: number;
+  title: string;
+  subtitle: string | null;
+  slug: string;
+  excerpt: string;
+  category_name: string;
+  category_slug: string;
+  author_name: string;
+  tags_list: { id: number; name: string; slug: string }[];
+  feature_image: string;
+  status: string;
+  is_pinned_global: boolean;
+  is_pinned_category: boolean;
+  published_at: string | null;
+  views_count: number;
+  is_read: boolean;
+  created_at: string;
+}
