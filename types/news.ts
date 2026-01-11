@@ -55,3 +55,48 @@ export interface APINewsItem {
   is_read: boolean;
   created_at: string;
 }
+
+export interface NewsDetail {
+  id: number;
+  title: string;
+  subtitle: string | null;
+  slug: string;
+  excerpt: string;
+  content: string;
+  category_id: number;
+  category_name: string;
+  category_slug: string;
+  tags: { id: number; name: string; slug: string }[];
+  author_id: number;
+  author_name: string;
+  author_designation: string | null;
+  feature_image: {
+    id: number;
+    file: string;
+    file_type: string;
+    caption: string;
+    alt_text: string;
+    is_featured: boolean;
+    order: number;
+    created_at: string;
+    updated_at: string;
+  }[];
+  media_files_list: any[];
+  status: string;
+  published_at: string | null;
+  views_count: number;
+  is_pinned_global: boolean;
+  is_pinned_category: boolean;
+  seo: {
+    seo_title: string;
+    seo_subtitle: string | null;
+    seo_description: string;
+    seo_excerpt: string;
+    canonical_url: string;
+    seo_index: boolean;
+    seo_keywords: string[];
+  };
+  is_read: boolean;
+  created_at: string;
+  updated_at: string;
+}
